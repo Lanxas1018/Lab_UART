@@ -1,0 +1,905 @@
+/*
+
+Xilinx Vivado v2022.1 (64-bit) [Major: 2022, Minor: 1]
+SW Build: 3526262 on Mon Apr 18 15:47:01 MDT 2022
+IP Build: 3524634 on Mon Apr 18 20:55:01 MDT 2022
+
+Process ID (PID): 6594
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Wed Aug 23 18:00:25 CST 2023
+Time zone: 	Taipei Standard Time (Asia/Taipei)
+
+OS: Ubuntu
+OS Version: 5.15.0-79-generic
+OS Architecture: amd64
+Available processors (cores): 8
+
+Display: 0
+Screen size: 1920x966
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+
+Java version: 	11.0.11 64-bit
+Java home: 	/tools/Xilinx/Vivado/2022.1/tps/lnx64/jre11.0.11_9
+Java executable: 	/tools/Xilinx/Vivado/2022.1/tps/lnx64/jre11.0.11_9/bin/java
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Djdk.gtk.version=2, -Dsun.java2d.uiScale.enabled=false, -Xverify:none, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, --add-opens=java.desktop/com.sun.awt=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED, -XX:NewSize=60m, -XX:MaxNewSize=60m, -Xms256m, -Xmx3072m, -Xss5m, -Xrs]
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	hisky
+User home directory: /home/hisky
+User working directory: /home/hisky/caravel-soc-josh/vivado
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /tools/Xilinx/Vivado
+HDI_APPROOT: /tools/Xilinx/Vivado/2022.1
+RDI_DATADIR: /tools/Xilinx/Vivado/2022.1/data
+RDI_BINDIR: /tools/Xilinx/Vivado/2022.1/bin
+
+Vivado preferences file: /home/hisky/.Xilinx/Vivado/2022.1/vivado.xml
+Vivado preferences directory: /home/hisky/.Xilinx/Vivado/2022.1/
+Vivado layouts directory: /home/hisky/.Xilinx/Vivado/2022.1/data/layouts
+PlanAhead jar file: 	/tools/Xilinx/Vivado/2022.1/lib/classes/planAhead.jar
+Vivado log file: 	/home/hisky/caravel-soc-josh/vivado/vivado.log
+Vivado journal file: 	/home/hisky/caravel-soc-josh/vivado/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-6594-SOCLab
+
+Xilinx Environment Variables
+----------------------------
+XILINX: /tools/Xilinx/Vivado/2022.1/ids_lite/ISE
+XILINX_DSP: /tools/Xilinx/Vivado/2022.1/ids_lite/ISE
+XILINX_HLS: /tools/Xilinx/Vitis_HLS/2022.1
+XILINX_PLANAHEAD: /tools/Xilinx/Vivado/2022.1
+XILINX_SDK: /tools/Xilinx/Vitis/2022.1
+XILINX_VITIS: /tools/Xilinx/Vitis/2022.1
+XILINX_VIVADO: /tools/Xilinx/Vivado/2022.1
+XILINX_VIVADO_HLS: /tools/Xilinx/Vivado/2022.1
+
+
+GUI allocated memory:	349 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,970 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,873 MB. GUI used memory: 55 MB. Current time: 8/23/23, 6:00:26 PM CST
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // l
+// Tcl Command: 'if { [info exists ::env(USER_DESIGN_FILE)] } {;       variable user_design_file $env(USER_DESIGN_FILE); } else {;       variable user_design_file "user_proj_example.counter.v"; };   ; # Check file required for this script exists; proc checkRequiredFiles { origin_dir} {;   set status true  ;   set files [list...'
+// Tcl Command: 'if { [info exists ::env(USER_DESIGN_FILE)] } {;       variable user_design_file $env(USER_DESIGN_FILE); } else {;       variable user_design_file "user_proj_example.counter.v"; }'
+// Tcl Command: '  '
+// Tcl Command: '# Check file required for this script exists'
+// Tcl Command: '# Set the reference directory for source file relative paths (by default the value is script directory path)'
+// Tcl Command: 'set origin_dir "."'
+// Tcl Command: ''
+// Tcl Command: '# Use origin directory path location variable, if specified in the tcl shell'
+// Tcl Command: 'if { [info exists ::origin_dir_loc] } {;   set origin_dir $::origin_dir_loc; }'
+// Tcl Command: ''
+// Tcl Command: '# Set the project name'
+// Tcl Command: 'set _xil_proj_name_ "vvd_caravel_fpga"'
+// Tcl Command: ''
+// Tcl Command: '# Use project name variable, if specified in the tcl shell'
+// Tcl Command: 'if { [info exists ::user_project_name] } {;   set _xil_proj_name_ $::user_project_name; }'
+// Tcl Command: ''
+// Tcl Command: 'variable script_file'
+// Tcl Command: 'set script_file "vvd_caravel_fpga_10MHz.tcl"'
+// Tcl Command: ''
+// Tcl Command: '# Help information for this script'
+// Tcl Command: ''
+// Tcl Command: 'if { $::argc > 0 } {;   for {set i 0} {$i < $::argc} {incr i} {;     set option [string trim [lindex $::argv $i]];     switch -regexp -- $option {;       "--origin_dir"   { incr i; set origin_dir [lindex $::argv $i] };       "--project_name" { incr i; set _xil_proj_name_ [lindex $::argv $i] };       "--help"         { print_help };       default {;         if { [regexp {^-} $option] } {;           puts "ERROR: Unknown option '$option' specified, please type '$script_file -tclargs --help' for usage info.\n";           return 1;         };       };     };   }; }'
+// Tcl Command: ''
+// Tcl Command: '# Set the directory path for the original project from where this script was exported'
+// Tcl Command: 'set orig_proj_dir "[file normalize "$origin_dir/vvd_caravel_fpga"]"'
+// Tcl Command: ''
+// Tcl Command: '# Check for paths and files needed for project creation'
+// Tcl Command: 'set validate_required 0'
+// Tcl Command: 'if { $validate_required } {;   if { [checkRequiredFiles $origin_dir] } {;     puts "Tcl file $script_file is valid. All files required for project creation is accesable. ";   } else {;     puts "Tcl file $script_file is not valid. Not all files required for project creation is accesable. ";     return;   }; }'
+// Tcl Command: ''
+// Tcl Command: '# Create project'
+// Tcl Command: 'create_project ${_xil_proj_name_} ./${_xil_proj_name_} -part xc7z020clg400-1'
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: if { [info exists ::env(USER_DESIGN_FILE)] } {       variable user_design_file $env(USER_DESIGN_FILE) } else {       variable user_design_file "user_proj_example.counter.v" } 
+// Tcl Message:    
+// Tcl Message: # Check file required for this script exists 
+// Tcl Message: # Set the reference directory for source file relative paths (by default the value is script directory path) 
+// Tcl Message: set origin_dir "." 
+// Tcl Message: . 
+// Tcl Message: # Use origin directory path location variable, if specified in the tcl shell 
+// Tcl Message: if { [info exists ::origin_dir_loc] } {   set origin_dir $::origin_dir_loc } 
+// Tcl Message: # Set the project name 
+// Tcl Message: set _xil_proj_name_ "vvd_caravel_fpga" 
+// Tcl Message: vvd_caravel_fpga 
+// Tcl Message: # Use project name variable, if specified in the tcl shell 
+// Tcl Message: if { [info exists ::user_project_name] } {   set _xil_proj_name_ $::user_project_name } 
+// Tcl Message: variable script_file 
+// Tcl Message: set script_file "vvd_caravel_fpga_10MHz.tcl" 
+// Tcl Message: vvd_caravel_fpga_10MHz.tcl 
+// Tcl Message: # Help information for this script 
+// Tcl Message: if { $::argc > 0 } {   for {set i 0} {$i < $::argc} {incr i} {     set option [string trim [lindex $::argv $i]]     switch -regexp -- $option {       "--origin_dir"   { incr i; set origin_dir [lindex $::argv $i] }       "--project_name" { incr i; set _xil_proj_name_ [lindex $::argv $i] }       "--help"         { print_help }       default {         if { [regexp {^-} $option] } {           puts "ERROR: Unknown option '$option' specified, please type '$script_file -tclargs --help' for usage info.\n"           return 1         }       }     }   } } 
+// Tcl Message: # Set the directory path for the original project from where this script was exported 
+// Tcl Message: set orig_proj_dir "[file normalize "$origin_dir/vvd_caravel_fpga"]" 
+// Tcl Message: /home/hisky/caravel-soc-josh/vivado/vvd_caravel_fpga 
+// Tcl Message: # Check for paths and files needed for project creation 
+// Tcl Message: set validate_required 0 
+// Tcl Message: 0 
+// Tcl Message: if { $validate_required } {   if { [checkRequiredFiles $origin_dir] } {     puts "Tcl file $script_file is valid. All files required for project creation is accesable. "   } else {     puts "Tcl file $script_file is not valid. Not all files required for project creation is accesable. "     return   } } 
+// Tcl Message: # Create project 
+// Tcl Message: create_project ${_xil_proj_name_} ./${_xil_proj_name_} -part xc7z020clg400-1 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 102 MB (+104761kb) [00:01:55]
+// [Engine Memory]: 1,993 MB (+1938164kb) [00:01:55]
+// [GUI Memory]: 110 MB (+2474kb) [00:01:55]
+// WARNING: HEventQueue.dispatchEvent() is taking  2098 ms.
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2022.1/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,940 MB. GUI used memory: 62 MB. Current time: 8/23/23, 6:02:12 PM CST
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [GUI Memory]: 117 MB (+2255kb) [00:01:59]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Command: ''
+// Tcl Command: '# Set the directory path for the new project'
+// Tcl Command: 'set proj_dir [get_property directory [current_project]]'
+// Tcl Command: ''
+// Tcl Command: '# Set project properties'
+// Tcl Command: 'set obj [current_project]'
+// Tcl Command: 'set_property -name "board_part" -value "tul.com.tw:pynq-z2:part0:1.0" -objects $obj'
+// TclEventType: BOARD_MODIFIED
+// Tcl Command: 'set_property -name "default_lib" -value "xil_defaultlib" -objects $obj'
+// Tcl Command: 'set_property -name "enable_resource_estimation" -value "0" -objects $obj'
+// Tcl Command: 'set_property -name "enable_vhdl_2008" -value "1" -objects $obj'
+// Tcl Command: 'set_property -name "ip_cache_permissions" -value "read write" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "ip_output_repo" -value "$proj_dir/${_xil_proj_name_}.cache/ip" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "mem.enable_memory_map_generation" -value "1" -objects $obj'
+// Tcl Command: 'set_property -name "platform.board_id" -value "pynq-z2" -objects $obj'
+// Tcl Command: 'set_property -name "revised_directory_structure" -value "1" -objects $obj'
+// Tcl Command: 'set_property -name "sim.central_dir" -value "$proj_dir/${_xil_proj_name_}.ip_user_files" -objects $obj'
+// Tcl Command: 'set_property -name "sim.ip.auto_export_scripts" -value "1" -objects $obj'
+// Tcl Command: 'set_property -name "simulator_language" -value "Mixed" -objects $obj'
+// Tcl Command: 'set_property -name "webtalk.activehdl_export_sim" -value "10" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "webtalk.ies_export_sim" -value "10" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "webtalk.modelsim_export_sim" -value "10" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "webtalk.questa_export_sim" -value "10" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "webtalk.riviera_export_sim" -value "10" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "webtalk.vcs_export_sim" -value "10" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "webtalk.xsim_export_sim" -value "10" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "webtalk.xsim_launch_sim" -value "25" -objects $obj'
+// TclEventType: PROJECT_CHANGE
+// Tcl Command: 'set_property -name "xpm_libraries" -value "XPM_CDC XPM_MEMORY" -objects $obj'
+// Tcl Command: ''
+// Tcl Command: '# Create 'sources_1' fileset (if not found)'
+// Tcl Command: 'if {[string equal [get_filesets -quiet sources_1] ""]} {;   create_fileset -srcset sources_1; }'
+// Tcl Command: ''
+// Tcl Command: '# Set IP repository paths'
+// Tcl Command: 'set obj [get_filesets sources_1]'
+// Tcl Command: 'if { $obj != {} } {;    set_property "ip_repo_paths" "[file normalize "$origin_dir/vitis_prj/hls_caravel_ps"] [file normalize "$origin_dir/vitis_prj/hls_output_pin"] [file normalize "$origin_dir/vitis_prj/hls_read_romcode"]" $obj; ;    # Rebuild user ip_repo's index before adding any source files;    update_ip_catalog -rebuild; }'
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+// Tcl Command: ''
+// Tcl Command: '# Set 'sources_1' fileset object'
+// Tcl Command: 'set obj [get_filesets sources_1]'
+// Tcl Command: 'add_files -norecurse -fileset $obj $files'
+// TclEventType: FILE_SET_CHANGE
+// Tcl Command: ''
+// Tcl Command: '# Set 'sources_1' fileset file properties for remote files'
+// Tcl Command: 'set file "$origin_dir/vvd_srcs/caravel_soc/rtl/header/user_defines.v"'
+// Tcl Command: 'set file [file normalize $file]'
+// Tcl Command: 'set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]'
+// Tcl Command: 'set_property -name "file_type" -value "Verilog Header" -objects $file_obj'
+// TclEventType: FILE_SET_CHANGE
+// Tcl Command: 'set_property -name "is_global_include" -value "1" -objects $file_obj'
+// TclEventType: FILE_SET_CHANGE
+// Tcl Command: ''
+// Tcl Command: 'set file "$origin_dir/vvd_srcs/caravel_soc/rtl/header/defines.v"'
+// Tcl Command: 'set file [file normalize $file]'
+// Tcl Command: 'set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]'
+// Tcl Command: 'set_property -name "file_type" -value "Verilog Header" -objects $file_obj'
+// TclEventType: FILE_SET_CHANGE
+// Tcl Command: 'set_property -name "is_global_include" -value "1" -objects $file_obj'
+// TclEventType: FILE_SET_CHANGE
+// Tcl Command: ''
+// Tcl Command: ''
+// Tcl Command: '# Set 'sources_1' fileset file properties for local files'
+// Tcl Command: '# None'
+// Tcl Command: ''
+// Tcl Command: '# Set 'sources_1' fileset properties'
+// Tcl Command: 'set obj [get_filesets sources_1]'
+// Tcl Command: 'set_property -name "top" -value "design_1_wrapper" -objects $obj'
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Command: ''
+// Tcl Command: '# Create 'constrs_1' fileset (if not found)'
+// Tcl Command: 'if {[string equal [get_filesets -quiet constrs_1] ""]} {;   create_fileset -constrset constrs_1; }'
+// Tcl Command: ''
+// Tcl Command: '# Set 'constrs_1' fileset object'
+// Tcl Command: 'set obj [get_filesets constrs_1]'
+// Tcl Command: ''
+// Tcl Command: '# Empty (no sources present)'
+// Tcl Command: ''
+// Tcl Command: '# Set 'constrs_1' fileset properties'
+// Tcl Command: 'set obj [get_filesets constrs_1]'
+// Tcl Command: ''
+// Tcl Command: '# Set 'utils_1' fileset object'
+// Tcl Command: 'set obj [get_filesets utils_1]'
+// Tcl Command: '# Empty (no sources present)'
+// Tcl Command: ''
+// Tcl Command: '# Set 'utils_1' fileset properties'
+// Tcl Command: 'set obj [get_filesets utils_1]'
+// Tcl Message: create_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:05 . Memory (MB): peak = 7653.086 ; gain = 52.031 ; free physical = 5993 ; free virtual = 10061 
+// Tcl Message: vvd_caravel_fpga 
+// Tcl Message: # Set the directory path for the new project 
+// Tcl Message: set proj_dir [get_property directory [current_project]] 
+// Tcl Message: /home/hisky/caravel-soc-josh/vivado/vvd_caravel_fpga 
+// Tcl Message: # Set project properties 
+// Tcl Message: set obj [current_project] 
+// Tcl Message: vvd_caravel_fpga 
+// Tcl Message: set_property -name "board_part" -value "tul.com.tw:pynq-z2:part0:1.0" -objects $obj 
+// Tcl Message: set_property -name "default_lib" -value "xil_defaultlib" -objects $obj 
+// Tcl Message: set_property -name "enable_resource_estimation" -value "0" -objects $obj 
+// Tcl Message: set_property -name "enable_vhdl_2008" -value "1" -objects $obj 
+// Tcl Message: set_property -name "ip_cache_permissions" -value "read write" -objects $obj 
+// Tcl Message: set_property -name "ip_output_repo" -value "$proj_dir/${_xil_proj_name_}.cache/ip" -objects $obj 
+// Tcl Message: set_property -name "mem.enable_memory_map_generation" -value "1" -objects $obj 
+// Tcl Message: set_property -name "platform.board_id" -value "pynq-z2" -objects $obj 
+// Tcl Message: set_property -name "revised_directory_structure" -value "1" -objects $obj 
+// Tcl Message: set_property -name "sim.central_dir" -value "$proj_dir/${_xil_proj_name_}.ip_user_files" -objects $obj 
+// Tcl Message: set_property -name "sim.ip.auto_export_scripts" -value "1" -objects $obj 
+// Tcl Message: set_property -name "simulator_language" -value "Mixed" -objects $obj 
+// Tcl Message: set_property -name "webtalk.activehdl_export_sim" -value "10" -objects $obj 
+// Tcl Message: set_property -name "webtalk.ies_export_sim" -value "10" -objects $obj 
+// Tcl Message: set_property -name "webtalk.modelsim_export_sim" -value "10" -objects $obj 
+// Tcl Message: set_property -name "webtalk.questa_export_sim" -value "10" -objects $obj 
+// Tcl Message: set_property -name "webtalk.riviera_export_sim" -value "10" -objects $obj 
+// Tcl Message: set_property -name "webtalk.vcs_export_sim" -value "10" -objects $obj 
+// Tcl Message: set_property -name "webtalk.xsim_export_sim" -value "10" -objects $obj 
+// Tcl Message: set_property -name "webtalk.xsim_launch_sim" -value "25" -objects $obj 
+// Tcl Message: set_property -name "xpm_libraries" -value "XPM_CDC XPM_MEMORY" -objects $obj 
+// Tcl Message: # Create 'sources_1' fileset (if not found) 
+// Tcl Message: if {[string equal [get_filesets -quiet sources_1] ""]} {   create_fileset -srcset sources_1 } 
+// Tcl Message: # Set IP repository paths 
+// Tcl Message: set obj [get_filesets sources_1] 
+// Tcl Message: sources_1 
+// Tcl Message: if { $obj != {} } {    set_property "ip_repo_paths" "[file normalize "$origin_dir/vitis_prj/hls_caravel_ps"] [file normalize "$origin_dir/vitis_prj/hls_output_pin"] [file normalize "$origin_dir/vitis_prj/hls_read_romcode"]" $obj     # Rebuild user ip_repo's index before adding any source files    update_ip_catalog -rebuild } 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_caravel_ps'. INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_output_pin'. INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_read_romcode'. 
+// Tcl Message: 1 
+// Tcl Message: # Set 'sources_1' fileset object 
+// Tcl Message: set obj [get_filesets sources_1] 
+// Tcl Message: sources_1 
+// Tcl Message: add_files -norecurse -fileset $obj $files 
+// Tcl Message: # Set 'sources_1' fileset file properties for remote files 
+// Tcl Message: set file "$origin_dir/vvd_srcs/caravel_soc/rtl/header/user_defines.v" 
+// Tcl Message: ./vvd_srcs/caravel_soc/rtl/header/user_defines.v 
+// Tcl Message: set file [file normalize $file] 
+// Tcl Message: /home/hisky/caravel-soc-josh/vivado/vvd_srcs/caravel_soc/rtl/header/user_defines.v 
+// Tcl Message: set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]] 
+// Tcl Message: /home/hisky/caravel-soc-josh/vivado/vvd_srcs/caravel_soc/rtl/header/user_defines.v 
+// Tcl Message: set_property -name "file_type" -value "Verilog Header" -objects $file_obj 
+// Tcl Message: set_property -name "is_global_include" -value "1" -objects $file_obj 
+// Tcl Message: set file "$origin_dir/vvd_srcs/caravel_soc/rtl/header/defines.v" 
+// Tcl Message: ./vvd_srcs/caravel_soc/rtl/header/defines.v 
+// Tcl Message: set file [file normalize $file] 
+// Tcl Message: /home/hisky/caravel-soc-josh/vivado/vvd_srcs/caravel_soc/rtl/header/defines.v 
+// Tcl Message: set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]] 
+// Tcl Message: /home/hisky/caravel-soc-josh/vivado/vvd_srcs/caravel_soc/rtl/header/defines.v 
+// Tcl Message: set_property -name "file_type" -value "Verilog Header" -objects $file_obj 
+// Tcl Message: set_property -name "is_global_include" -value "1" -objects $file_obj 
+// Tcl Message: # Set 'sources_1' fileset file properties for local files 
+// Tcl Message: # None 
+// Tcl Message: # Set 'sources_1' fileset properties 
+// Tcl Message: set obj [get_filesets sources_1] 
+// Tcl Message: sources_1 
+// Tcl Message: set_property -name "top" -value "design_1_wrapper" -objects $obj 
+// Tcl Message: # Create 'constrs_1' fileset (if not found) 
+// Tcl Message: if {[string equal [get_filesets -quiet constrs_1] ""]} {   create_fileset -constrset constrs_1 } 
+// Tcl Message: # Set 'constrs_1' fileset object 
+// Tcl Message: set obj [get_filesets constrs_1] 
+// Tcl Message: constrs_1 
+// Tcl Message: # Empty (no sources present) 
+// Tcl Message: # Set 'constrs_1' fileset properties 
+// Tcl Message: set obj [get_filesets constrs_1] 
+// Tcl Message: constrs_1 
+// Tcl Message: # Set 'utils_1' fileset object 
+// Tcl Message: set obj [get_filesets utils_1] 
+// Tcl Message: utils_1 
+// Tcl Message: # Empty (no sources present) 
+// Tcl Message: # Set 'utils_1' fileset properties 
+// Tcl Message: set obj [get_filesets utils_1] 
+// Tcl Message: utils_1 
+dismissDialog("Tcl Command Line"); // bA
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Add Sources]", 2, false); // n
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// 'g' command handler elapsed time: 4 seconds
+dismissDialog("Add Sources"); // c
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 2); // D
+// PAPropertyPanels.initPanels (caravel.v) elapsed time: 0.2s
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, caravel.v]", 3, false); // D
+// [GUI Memory]: 125 MB (+2248kb) [00:02:10]
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, caravel.v]", 3, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, caravel.v]", 3, false, false, false, false, false, true); // D - Double Click
+// WARNING: HEventQueue.dispatchEvent() is taking  1674 ms.
+dismissDialog("Opening Editor"); // bA
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// HMemoryUtils.trashcanNow. Engine heap size: 2,066 MB. GUI used memory: 77 MB. Current time: 8/23/23, 6:02:31 PM CST
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+dismissDialog("Invalid Top Module"); // I
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// [Engine Memory]: 2,099 MB (+6608kb) [00:02:23]
+// Elapsed time: 34 seconds
+selectCodeEditor("caravel.v", 532, 351); // be
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, user_proj_example.counter.v]", 4, false); // D
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, user_proj_example.counter.v]", 4, false, false, false, false, false, true); // D - Double Click
+// WARNING: HEventQueue.dispatchEvent() is taking  1152 ms.
+dismissDialog("Opening Editor"); // bA
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// HMemoryUtils.trashcanNow. Engine heap size: 2,123 MB. GUI used memory: 77 MB. Current time: 8/23/23, 6:03:11 PM CST
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// [GUI Memory]: 136 MB (+4408kb) [00:03:03]
+// Elapsed time: 35 seconds
+selectCodeEditor("user_proj_example.counter.v", 112, 140); // be
+selectCodeEditor("user_proj_example.counter.v", 92, 146); // be
+selectCodeEditor("user_proj_example.counter.v", 92, 146, false, false, false, false, true); // be - Double Click
+selectCodeEditor("user_proj_example.counter.v", 92, 146); // be
+selectCodeEditor("user_proj_example.counter.v", 203, 144); // be
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 32 seconds
+selectCodeEditor("user_proj_example.counter.v", 444, 188); // be
+// Elapsed time: 18 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // l
+// Tcl Command: 'set design_name design_1; ;   common::send_gid_msg -ssname BD::TCL -id 2010 -severity "INFO" "Currently there is no design <$design_name> in project, so creating one..."; ;   create_bd_design $design_name; ;   set bCheckIPsPassed 1;   ##################################################################;   # CH...'
+// Tcl Command: 'set design_name design_1'
+// Tcl Command: ''
+// Tcl Command: '  common::send_gid_msg -ssname BD::TCL -id 2010 -severity "INFO" "Currently there is no design <$design_name> in project, so creating one..."'
+// Tcl Command: ''
+// Tcl Command: '  create_bd_design $design_name'
+// TclEventType: LOAD_FEATURE
+// Tcl Message: set design_name design_1 
+// Tcl Message: design_1 
+// Tcl Message:   common::send_gid_msg -ssname BD::TCL -id 2010 -severity "INFO" "Currently there is no design <$design_name> in project, so creating one..." 
+// Tcl Message: INFO: [BD::TCL 103-2010] Currently there is no design <design_1> in project, so creating one... 
+// Tcl Message:   create_bd_design $design_name 
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_OPEN_DIAGRAM
+// Tcl Message: Wrote  : </home/hisky/caravel-soc-josh/vivado/vvd_caravel_fpga/vvd_caravel_fpga.srcs/sources_1/bd/design_1/design_1.bd>  
+// TclEventType: RSB_OPEN_DIAGRAM
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// Tcl Command: ''
+// Tcl Command: '  set bCheckIPsPassed 1'
+// Tcl Command: '  ##################################################################'
+// Tcl Command: '  # CHECK IPs'
+// Tcl Command: '  ##################################################################'
+// Tcl Command: '  set bCheckIPs 1'
+// Tcl Command: ''
+// Tcl Command: '  ##################################################################'
+// Tcl Command: '  # CHECK Modules'
+// Tcl Command: '  ##################################################################'
+// Tcl Command: '  set bCheckModules 1'
+// Tcl Command: ''
+// Tcl Command: '  if { $bCheckIPsPassed != 1 } {;     common::send_gid_msg -ssname BD::TCL -id 2023 -severity "WARNING" "Will not continue with creation of design due to the error(s) above.";     return 3;   }'
+// Tcl Command: ''
+// Tcl Command: '  variable script_folder'
+// Tcl Message: design_1 
+// Tcl Message:   set bCheckIPsPassed 1 
+// Tcl Message: 1 
+// Tcl Message:   ################################################################## 
+// Tcl Message:   # CHECK IPs 
+// Tcl Message:   ################################################################## 
+// Tcl Message:   set bCheckIPs 1 
+// Tcl Message: 1 
+// Tcl Message: INFO: [BD::TCL 103-2011] Checking if the following IPs exist in the project's IP catalog:     xilinx.com:ip:blk_mem_gen:8.4 xilinx.com:hls:caravel_ps:0.0 xilinx.com:hls:output_pin:0.0 xilinx.com:ip:processing_system7:5.5 xilinx.com:hls:read_romcode:0.0 xilinx.com:ip:proc_sys_reset:5.0  . 
+// Tcl Message:   ################################################################## 
+// Tcl Message:   # CHECK Modules 
+// Tcl Message:   ################################################################## 
+// Tcl Message:   set bCheckModules 1 
+// Tcl Message: 1 
+// Tcl Message: INFO: [BD::TCL 103-2020] Checking if the following modules exist in the project's sources:     caravel spiflash  . 
+// Tcl Message:   if { $bCheckIPsPassed != 1 } {     common::send_gid_msg -ssname BD::TCL -id 2023 -severity "WARNING" "Will not continue with creation of design due to the error(s) above."     return 3   } 
+// Tcl Message:   variable script_folder 
+dismissDialog("Tcl Command Line"); // bA
+// HMemoryUtils.trashcanNow. Engine heap size: 2,210 MB. GUI used memory: 80 MB. Current time: 8/23/23, 6:04:41 PM CST
+// [Engine Memory]: 2,210 MB (+6356kb) [00:04:26]
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// Tcl Command: 'rdi::info_commands bd::match_path'
+// Tcl Command: 'bd::match_path {set} {/} {]}'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "set parentCell [get_bd_cells /]", true); // l
+// Tcl Command: 'set parentCell [get_bd_cells /]'
+// Tcl Command: 'set parentCell [get_bd_cells /]'
+// Tcl Message: set parentCell [get_bd_cells /] 
+// Tcl Message: / 
+// Elapsed time: 23 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // l
+// Tcl Command: 'rdi::info_commands bd::match_path'
+// Tcl Command: 'bd::match_path {connect_bd_net} {spiflash_0/} {romcode_WEN_A]}'
+// Tcl Command: 'set parentObj [get_bd_cells $parentCell];   if { $parentObj == "" } {;      catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"};      return;   }; ;   # Make sure parentObj is hier blk;   set parentType [get_property TYPE $parentObj];   if { $pa...'
+// Tcl Command: 'set parentObj [get_bd_cells $parentCell]'
+// Tcl Command: '  if { $parentObj == "" } {;      catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"};      return;   }'
+// Tcl Command: ''
+// Tcl Command: '  # Make sure parentObj is hier blk'
+// Tcl Command: '  set parentType [get_property TYPE $parentObj]'
+// Tcl Command: '  if { $parentType ne "hier" } {;      catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."};      return;   }'
+// Tcl Command: ''
+// Tcl Command: '  # Save current instance; Restore later'
+// Tcl Command: '  set oldCurInst [current_bd_instance .]'
+// Tcl Command: ''
+// Tcl Command: '  # Set parent object as current'
+// Tcl Command: '  current_bd_instance $parentObj'
+// Tcl Command: ''
+// Tcl Command: ''
+// Tcl Command: '  # Create interface ports'
+// Tcl Command: '  set DDR_0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:ddrx_rtl:1.0 DDR_0 ]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: ''
+// Tcl Command: '  set FIXED_IO_0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 FIXED_IO_0 ]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: ''
+// Tcl Command: ''
+// Tcl Command: '  # Create ports'
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: axi_mem_intercon, and set properties'
+// Tcl Command: '  set axi_mem_intercon [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_mem_intercon ]'
+// TclEventType: LOAD_FEATURE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: set parentObj [get_bd_cells $parentCell] 
+// Tcl Message: / 
+// Tcl Message:   if { $parentObj == "" } {      catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}      return   } 
+// Tcl Message:   # Make sure parentObj is hier blk 
+// Tcl Message:   set parentType [get_property TYPE $parentObj] 
+// Tcl Message: hier 
+// Tcl Message:   if { $parentType ne "hier" } {      catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}      return   } 
+// Tcl Message:   # Save current instance; Restore later 
+// Tcl Message:   set oldCurInst [current_bd_instance .] 
+// Tcl Message: / 
+// Tcl Message:   # Set parent object as current 
+// Tcl Message:   current_bd_instance $parentObj 
+// Tcl Message: / 
+// Tcl Message:   # Create interface ports 
+// Tcl Message:   set DDR_0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:ddrx_rtl:1.0 DDR_0 ] 
+// Tcl Message: /DDR_0 
+// Tcl Message:   set FIXED_IO_0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 FIXED_IO_0 ] 
+// Tcl Message: /FIXED_IO_0 
+// Tcl Message:   # Create ports 
+// Tcl Message:   # Create instance: axi_mem_intercon, and set properties 
+// Tcl Message:   set axi_mem_intercon [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_mem_intercon ] 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: '  set_property -dict [ list \;    CONFIG.NUM_MI {1} \;  ] $axi_mem_intercon'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_PROPERTY_CHANGE
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: blk_mem_gen_0, and set properties'
+// Tcl Command: '  set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0 ]'
+// Tcl Message: /axi_mem_intercon 
+// Tcl Message:   set_property -dict [ list \    CONFIG.NUM_MI {1} \  ] $axi_mem_intercon 
+// Tcl Message:   # Create instance: blk_mem_gen_0, and set properties 
+// Tcl Message:   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0 ] 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: '  set_property -dict [ list \;    CONFIG.Enable_B {Use_ENB_Pin} \;    CONFIG.Memory_Type {True_Dual_Port_RAM} \;    CONFIG.Port_B_Clock {100} \;    CONFIG.Port_B_Enable_Rate {100} \;    CONFIG.Port_B_Write_Rate {50} \;    CONFIG.Use_RSTB_Pin {true} \;  ] $blk_mem_gen_0'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_PROPERTY_CHANGE
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: caravel_0, and set properties'
+// Tcl Command: '  set block_name caravel'
+// Tcl Command: '  set block_cell_name caravel_0'
+// Tcl Command: '  if { [catch {set caravel_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {;      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."};      return 1;    } elseif { $caravel_0 eq "" } {;      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."};      return 1;    }'
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: '  '
+// Tcl Command: '  # Create instance: caravel_ps_0, and set properties'
+// Tcl Command: '  set caravel_ps_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:caravel_ps:0.0 caravel_ps_0 ]'
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: output_pin_0, and set properties'
+// Tcl Command: '  set output_pin_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:output_pin:0.0 output_pin_0 ]'
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: processing_system7_0, and set properties'
+// Tcl Command: '  set processing_system7_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0 ]'
+// Tcl Message: /blk_mem_gen_0 
+// Tcl Message:   set_property -dict [ list \    CONFIG.Enable_B {Use_ENB_Pin} \    CONFIG.Memory_Type {True_Dual_Port_RAM} \    CONFIG.Port_B_Clock {100} \    CONFIG.Port_B_Enable_Rate {100} \    CONFIG.Port_B_Write_Rate {50} \    CONFIG.Use_RSTB_Pin {true} \  ] $blk_mem_gen_0 
+// Tcl Message:   # Create instance: caravel_0, and set properties 
+// Tcl Message:   set block_name caravel 
+// Tcl Message: caravel 
+// Tcl Message:   set block_cell_name caravel_0 
+// Tcl Message: caravel_0 
+// Tcl Message:   if { [catch {set caravel_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}      return 1    } elseif { $caravel_0 eq "" } {      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}      return 1    } 
+// Tcl Message: INFO: [IP_Flow 19-5107] Inferred bus interface 'userbram_Rst' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-5107] Inferred bus interface 'clock' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-5107] Inferred bus interface 'flash_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-5107] Inferred bus interface 'userbram_Clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-4728] Bus Interface 'userbram_Clk': Added interface parameter 'ASSOCIATED_RESET' with value 'userbram_Rst'. 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_caravel_ps'. INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_output_pin'. INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_read_romcode'. 
+// Tcl Message:    
+// Tcl Message:   # Create instance: caravel_ps_0, and set properties 
+// Tcl Message:   set caravel_ps_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:caravel_ps:0.0 caravel_ps_0 ] 
+// Tcl Message: /caravel_ps_0 
+// Tcl Message:   # Create instance: output_pin_0, and set properties 
+// Tcl Message:   set output_pin_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:output_pin:0.0 output_pin_0 ] 
+// Tcl Message: /output_pin_0 
+// Tcl Message:   # Create instance: processing_system7_0, and set properties 
+// Tcl Message:   set processing_system7_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0 ] 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Message: /processing_system7_0 
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_PROPERTY_CHANGE
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: ps7_0_axi_periph, and set properties'
+// Tcl Command: '  set ps7_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 ps7_0_axi_periph ]'
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message:   # Create instance: ps7_0_axi_periph, and set properties 
+// Tcl Message:   set ps7_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 ps7_0_axi_periph ] 
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: '  set_property -dict [ list \;    CONFIG.NUM_MI {3} \;  ] $ps7_0_axi_periph'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_PROPERTY_CHANGE
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: read_romcode_0, and set properties'
+// Tcl Command: '  set read_romcode_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:read_romcode:0.0 read_romcode_0 ]'
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: rst_ps7_0_10M, and set properties'
+// Tcl Command: '  set rst_ps7_0_10M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_10M ]'
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: ''
+// Tcl Command: '  # Create instance: spiflash_0, and set properties'
+// Tcl Command: '  set block_name spiflash'
+// Tcl Command: '  set block_cell_name spiflash_0'
+// Tcl Command: '  if { [catch {set spiflash_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {;      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."};      return 1;    } elseif { $spiflash_0 eq "" } {;      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."};      return 1;    }'
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// Tcl Command: '  '
+// Tcl Command: '  # Create interface connections'
+// Tcl Command: '  connect_bd_intf_net -intf_net axi_mem_intercon_M00_AXI [get_bd_intf_pins axi_mem_intercon/M00_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_HP0]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR_0] [get_bd_intf_pins processing_system7_0/DDR]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO_0] [get_bd_intf_pins processing_system7_0/FIXED_IO]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins processing_system7_0/M_AXI_GP0] [get_bd_intf_pins ps7_0_axi_periph/S00_AXI]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins caravel_ps_0/s_axi_control] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins output_pin_0/s_axi_control] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins ps7_0_axi_periph/M02_AXI] [get_bd_intf_pins read_romcode_0/s_axi_control]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_intf_net -intf_net read_romcode_0_internal_bram_PORTA [get_bd_intf_pins blk_mem_gen_0/BRAM_PORTB] [get_bd_intf_pins read_romcode_0/internal_bram_PORTA]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_intf_net -intf_net read_romcode_0_m_axi_BUS0 [get_bd_intf_pins axi_mem_intercon/S00_AXI] [get_bd_intf_pins read_romcode_0/m_axi_BUS0]'
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: ''
+// Tcl Command: '  # Create port connections'
+// Tcl Command: '  connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins spiflash_0/romcode_Dout_A]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net caravel_0_flash_clk [get_bd_pins caravel_0/flash_clk] [get_bd_pins spiflash_0/spiclk]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net caravel_0_flash_csb [get_bd_pins caravel_0/flash_csb] [get_bd_pins spiflash_0/csb]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net caravel_0_flash_io0 [get_bd_pins caravel_0/flash_io0] [get_bd_pins spiflash_0/io0]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net caravel_0_mprj_en [get_bd_pins caravel_0/mprj_en] [get_bd_pins caravel_ps_0/mprj_en]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net caravel_0_mprj_o [get_bd_pins caravel_0/mprj_o] [get_bd_pins caravel_ps_0/mprj_out]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net caravel_ps_0_mprj_in [get_bd_pins caravel_0/mprj_i] [get_bd_pins caravel_ps_0/mprj_in]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net output_pin_0_outpin [get_bd_pins caravel_0/resetb] [get_bd_pins output_pin_0/outpin]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins axi_mem_intercon/ACLK] [get_bd_pins axi_mem_intercon/M00_ACLK] [get_bd_pins axi_mem_intercon/S00_ACLK] [get_bd_pins caravel_0/clock] [get_bd_pins caravel_ps_0/ap_clk] [get_bd_pins output_pin_0/ap_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins read_romcode_0/ap_clk] [get_bd_pins rst_ps7_0_10M/slowest_sync_clk] [get_bd_pins spiflash_0/ap_clk]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_10M/ext_reset_in]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins axi_mem_intercon/ARESETN] [get_bd_pins axi_mem_intercon/M00_ARESETN] [get_bd_pins axi_mem_intercon/S00_ARESETN] [get_bd_pins caravel_ps_0/ap_rst_n] [get_bd_pins output_pin_0/ap_rst_n] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins read_romcode_0/ap_rst_n] [get_bd_pins rst_ps7_0_10M/peripheral_aresetn]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net rst_ps7_0_50M_peripheral_reset [get_bd_pins rst_ps7_0_10M/peripheral_reset] [get_bd_pins spiflash_0/ap_rst]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net spiflash_0_io1 [get_bd_pins caravel_0/flash_io1] [get_bd_pins spiflash_0/io1]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net spiflash_0_romcode_Addr_A [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins spiflash_0/romcode_Addr_A]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net spiflash_0_romcode_Clk_A [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins spiflash_0/romcode_Clk_A]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net spiflash_0_romcode_Din_A [get_bd_pins blk_mem_gen_0/dina] [get_bd_pins spiflash_0/romcode_Din_A]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net spiflash_0_romcode_EN_A [get_bd_pins blk_mem_gen_0/ena] [get_bd_pins spiflash_0/romcode_EN_A]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net spiflash_0_romcode_Rst_A [get_bd_pins blk_mem_gen_0/rsta] [get_bd_pins spiflash_0/romcode_Rst_A]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Command: '  connect_bd_net -net spiflash_0_romcode_WEN_A [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins spiflash_0/romcode_WEN_A]'
+// TclEventType: RSB_CONNECTION_CHANGE
+// Tcl Message: /ps7_0_axi_periph 
+// Tcl Message:   set_property -dict [ list \    CONFIG.NUM_MI {3} \  ] $ps7_0_axi_periph 
+// Tcl Message:   # Create instance: read_romcode_0, and set properties 
+// Tcl Message:   set read_romcode_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:read_romcode:0.0 read_romcode_0 ] 
+// Tcl Message: /read_romcode_0 
+// Tcl Message:   # Create instance: rst_ps7_0_10M, and set properties 
+// Tcl Message:   set rst_ps7_0_10M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_10M ] 
+// Tcl Message: INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI 
+// Tcl Message: /rst_ps7_0_10M 
+// Tcl Message:   # Create instance: spiflash_0, and set properties 
+// Tcl Message:   set block_name spiflash 
+// Tcl Message: spiflash 
+// Tcl Message:   set block_cell_name spiflash_0 
+// Tcl Message: spiflash_0 
+// Tcl Message:   if { [catch {set spiflash_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}      return 1    } elseif { $spiflash_0 eq "" } {      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}      return 1    } 
+// Tcl Message: INFO: [IP_Flow 19-5107] Inferred bus interface 'ap_rst' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-5107] Inferred bus interface 'ap_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository). INFO: [IP_Flow 19-4728] Bus Interface 'ap_clk': Added interface parameter 'ASSOCIATED_RESET' with value 'ap_rst'. 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_caravel_ps'. INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_output_pin'. INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/hisky/caravel-soc-josh/vivado/vitis_prj/hls_read_romcode'. 
+// Tcl Message:    
+// Tcl Message:   # Create interface connections 
+// Tcl Message:   connect_bd_intf_net -intf_net axi_mem_intercon_M00_AXI [get_bd_intf_pins axi_mem_intercon/M00_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_HP0] 
+// Tcl Message:   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR_0] [get_bd_intf_pins processing_system7_0/DDR] 
+// Tcl Message:   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO_0] [get_bd_intf_pins processing_system7_0/FIXED_IO] 
+// Tcl Message:   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins processing_system7_0/M_AXI_GP0] [get_bd_intf_pins ps7_0_axi_periph/S00_AXI] 
+// Tcl Message:   connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins caravel_ps_0/s_axi_control] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI] 
+// Tcl Message:   connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins output_pin_0/s_axi_control] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI] 
+// Tcl Message:   connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins ps7_0_axi_periph/M02_AXI] [get_bd_intf_pins read_romcode_0/s_axi_control] 
+// Tcl Message:   connect_bd_intf_net -intf_net read_romcode_0_internal_bram_PORTA [get_bd_intf_pins blk_mem_gen_0/BRAM_PORTB] [get_bd_intf_pins read_romcode_0/internal_bram_PORTA] 
+// Tcl Message:   connect_bd_intf_net -intf_net read_romcode_0_m_axi_BUS0 [get_bd_intf_pins axi_mem_intercon/S00_AXI] [get_bd_intf_pins read_romcode_0/m_axi_BUS0] 
+// Tcl Message:   # Create port connections 
+// Tcl Message:   connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins spiflash_0/romcode_Dout_A] 
+// Tcl Message:   connect_bd_net -net caravel_0_flash_clk [get_bd_pins caravel_0/flash_clk] [get_bd_pins spiflash_0/spiclk] 
+// Tcl Message:   connect_bd_net -net caravel_0_flash_csb [get_bd_pins caravel_0/flash_csb] [get_bd_pins spiflash_0/csb] 
+// Tcl Message:   connect_bd_net -net caravel_0_flash_io0 [get_bd_pins caravel_0/flash_io0] [get_bd_pins spiflash_0/io0] 
+// Tcl Message:   connect_bd_net -net caravel_0_mprj_en [get_bd_pins caravel_0/mprj_en] [get_bd_pins caravel_ps_0/mprj_en] 
+// Tcl Message:   connect_bd_net -net caravel_0_mprj_o [get_bd_pins caravel_0/mprj_o] [get_bd_pins caravel_ps_0/mprj_out] 
+// Tcl Message:   connect_bd_net -net caravel_ps_0_mprj_in [get_bd_pins caravel_0/mprj_i] [get_bd_pins caravel_ps_0/mprj_in] 
+// Tcl Message:   connect_bd_net -net output_pin_0_outpin [get_bd_pins caravel_0/resetb] [get_bd_pins output_pin_0/outpin] 
+// Tcl Message:   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins axi_mem_intercon/ACLK] [get_bd_pins axi_mem_intercon/M00_ACLK] [get_bd_pins axi_mem_intercon/S00_ACLK] [get_bd_pins caravel_0/clock] [get_bd_pins caravel_ps_0/ap_clk] [get_bd_pins output_pin_0/ap_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins read_romcode_0/ap_clk] [get_bd_pins rst_ps7_0_10M/slowest_sync_clk] [get_bd_pins spiflash_0/ap_clk] 
+// Tcl Message:   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_10M/ext_reset_in] 
+// Tcl Message:   connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins axi_mem_intercon/ARESETN] [get_bd_pins axi_mem_intercon/M00_ARESETN] [get_bd_pins axi_mem_intercon/S00_ARESETN] [get_bd_pins caravel_ps_0/ap_rst_n] [get_bd_pins output_pin_0/ap_rst_n] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins read_romcode_0/ap_rst_n] [get_bd_pins rst_ps7_0_10M/peripheral_aresetn] 
+// Tcl Message:   connect_bd_net -net rst_ps7_0_50M_peripheral_reset [get_bd_pins rst_ps7_0_10M/peripheral_reset] [get_bd_pins spiflash_0/ap_rst] 
+// Tcl Message:   connect_bd_net -net spiflash_0_io1 [get_bd_pins caravel_0/flash_io1] [get_bd_pins spiflash_0/io1] 
+// Tcl Message:   connect_bd_net -net spiflash_0_romcode_Addr_A [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins spiflash_0/romcode_Addr_A] 
+// Tcl Message:   connect_bd_net -net spiflash_0_romcode_Clk_A [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins spiflash_0/romcode_Clk_A] 
+// Tcl Message:   connect_bd_net -net spiflash_0_romcode_Din_A [get_bd_pins blk_mem_gen_0/dina] [get_bd_pins spiflash_0/romcode_Din_A] 
+// Tcl Message:   connect_bd_net -net spiflash_0_romcode_EN_A [get_bd_pins blk_mem_gen_0/ena] [get_bd_pins spiflash_0/romcode_EN_A] 
+// Tcl Message:   connect_bd_net -net spiflash_0_romcode_Rst_A [get_bd_pins blk_mem_gen_0/rsta] [get_bd_pins spiflash_0/romcode_Rst_A] 
+// Tcl Message:   connect_bd_net -net spiflash_0_romcode_WEN_A [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins spiflash_0/romcode_WEN_A] 
+// JavaFX intialization before: 1692785118601
+dismissDialog("Tcl Command Line"); // bA
+// JavaFX initialization after: 1692785119110
