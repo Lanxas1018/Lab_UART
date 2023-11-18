@@ -20,7 +20,7 @@
 if { [info exists ::env(USER_DESIGN_FILE)] } {
       variable user_design_file $env(USER_DESIGN_FILE)
 } else {
-      variable user_design_file "user_proj_example.counter.v"
+      variable user_design_file "uart.v"
 }
   
 # Check file required for this script exists
@@ -41,8 +41,10 @@ proc checkRequiredFiles { origin_dir} {
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/soc/mprj_io.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/soc/caravel.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/$user_design_file"]"\
- "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/bram.v"]"\
- "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_project_wrapper.v"]"\ 
+ "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/uart_tx.v"]"\
+ "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/uart_rx.v"]"\
+ "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/uart_ctrl.v"]"\
+ "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/user/user_proj_wrapper_uart.v"]"\ 
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/header/user_defines.v"]"\
  "[file normalize "$origin_dir/vvd_srcs/caravel_soc/rtl/header/defines.v"]"\ 
   ]
@@ -206,8 +208,10 @@ set files [list \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/soc/mprj_io.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/soc/caravel.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/${user_design_file}"] \
- [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/bram.v"] \
- [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_project_wrapper.v"] \
+ [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/uart_tx.v"] \
+ [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/uart_rx.v"] \
+ [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/uart_ctrl.v"] \
+ [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/user/user_proj_wrapper_uart.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/header/user_defines.v"] \
  [file normalize "${origin_dir}/vvd_srcs/caravel_soc/rtl/header/defines.v"] \
 ]
@@ -1182,11 +1186,13 @@ gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]/HOLD_B#qspi0_
    CONFIG.PCW_WDT_PERIPHERAL_DIVISOR0 {1} \
    CONFIG.PCW_WDT_PERIPHERAL_FREQMHZ {133.333333} \
  ] $processing_system7_0
+ 
+ set_property -dict [list CONFIG.PCW_USE_FABRIC_INTERRUPT {1} CONFIG.PCW_IRQ_F2P_INTR {1}] $processing_system7_0
 
   # Create instance: ps7_0_axi_periph, and set properties
   set ps7_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 ps7_0_axi_periph ]
   set_property -dict [ list \
-   CONFIG.NUM_MI {3} \
+   CONFIG.NUM_MI {5} \
  ] $ps7_0_axi_periph
 
   # Create instance: read_romcode_0, and set properties
@@ -1205,6 +1211,17 @@ gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]/HOLD_B#qspi0_
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
+   
+  #for uart
+  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_0
+  set_property -dict [list CONFIG.C_S_AXI_ACLK_FREQ_HZ_d.VALUE_SRC USER] [get_bd_cells axi_uartlite_0]
+  set_property -dict [list CONFIG.C_S_AXI_ACLK_FREQ_HZ {40000000} CONFIG.C_S_AXI_ACLK_FREQ_HZ_d {40}] [get_bd_cells axi_uartlite_0]
+  
+  create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:4.1 axi_intc_0
+  
+  create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0
+  set_property -dict [list CONFIG.DIN_TO {6} CONFIG.DIN_FROM {6} CONFIG.DIN_WIDTH {38} CONFIG.DOUT_WIDTH {1}] [get_bd_cells xlslice_0]
+  
   
   # Create interface connections
   connect_bd_intf_net -intf_net axi_mem_intercon_M00_AXI [get_bd_intf_pins axi_mem_intercon/M00_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_HP0]
@@ -1216,6 +1233,9 @@ gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]/HOLD_B#qspi0_
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins ps7_0_axi_periph/M02_AXI] [get_bd_intf_pins read_romcode_0/s_axi_control]
   connect_bd_intf_net -intf_net read_romcode_0_internal_bram_PORTA [get_bd_intf_pins blk_mem_gen_0/BRAM_PORTB] [get_bd_intf_pins read_romcode_0/internal_bram_PORTA]
   connect_bd_intf_net -intf_net read_romcode_0_m_axi_BUS0 [get_bd_intf_pins axi_mem_intercon/S00_AXI] [get_bd_intf_pins read_romcode_0/m_axi_BUS0]
+  
+  connect_bd_intf_net -boundary_type upper [get_bd_intf_pins ps7_0_axi_periph/M03_AXI] [get_bd_intf_pins axi_uartlite_0/S_AXI]
+  connect_bd_intf_net -boundary_type upper [get_bd_intf_pins ps7_0_axi_periph/M04_AXI] [get_bd_intf_pins axi_intc_0/s_axi]
 
   # Create port connections
   connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins spiflash_0/romcode_Dout_A]
@@ -1237,11 +1257,27 @@ gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]/HOLD_B#qspi0_
   connect_bd_net -net spiflash_0_romcode_EN_A [get_bd_pins blk_mem_gen_0/ena] [get_bd_pins spiflash_0/romcode_EN_A]
   connect_bd_net -net spiflash_0_romcode_Rst_A [get_bd_pins blk_mem_gen_0/rsta] [get_bd_pins spiflash_0/romcode_Rst_A]
   connect_bd_net -net spiflash_0_romcode_WEN_A [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins spiflash_0/romcode_WEN_A]
+  
+  # for uart
+  connect_bd_net [get_bd_pins axi_uartlite_0/interrupt] [get_bd_pins axi_intc_0/intr]
+  connect_bd_net [get_bd_pins axi_intc_0/irq] [get_bd_pins processing_system7_0/IRQ_F2P]
+  connect_bd_net [get_bd_pins caravel_0/mprj_o] [get_bd_pins xlslice_0/Din]
+  connect_bd_net [get_bd_pins xlslice_0/Dout] [get_bd_pins axi_uartlite_0/rx]
+  connect_bd_net [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins ps7_0_axi_periph/M03_ACLK]
+  connect_bd_net [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins ps7_0_axi_periph/M04_ACLK]
+  connect_bd_net [get_bd_pins rst_ps7_0_10M/peripheral_aresetn] [get_bd_pins ps7_0_axi_periph/M03_ARESETN]
+  connect_bd_net [get_bd_pins rst_ps7_0_10M/peripheral_aresetn] [get_bd_pins ps7_0_axi_periph/M04_ARESETN]
+  connect_bd_net [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins axi_uartlite_0/s_axi_aclk]
+  connect_bd_net [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins axi_intc_0/s_axi_aclk]
+  connect_bd_net [get_bd_pins rst_ps7_0_10M/peripheral_aresetn] [get_bd_pins axi_intc_0/s_axi_aresetn]
+  connect_bd_net [get_bd_pins rst_ps7_0_10M/peripheral_aresetn] [get_bd_pins axi_uartlite_0/s_axi_aresetn]
 
   # Create address segments
   assign_bd_address -offset 0x40000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs caravel_ps_0/s_axi_control/Reg] -force
   assign_bd_address -offset 0x40010000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs output_pin_0/s_axi_control/Reg] -force
   assign_bd_address -offset 0x40020000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs read_romcode_0/s_axi_control/Reg] -force
+  assign_bd_address -offset 0x40030000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0x41200000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_intc_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces read_romcode_0/Data_m_axi_BUS0] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] -force
 
 

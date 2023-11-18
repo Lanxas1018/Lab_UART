@@ -111,7 +111,7 @@ module tbuart (
 	always@(posedge clk)begin
 		if(recv_state==R_STOP_BIT)begin
 			recv_buf_data <= {recv_buf_data, recv_pattern};
-			$display("recevied word %s", recv_pattern);
+			$display("recevied word %d", recv_pattern);
 		end
 	end
 	
