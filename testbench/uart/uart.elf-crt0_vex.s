@@ -104,6 +104,10 @@ bss_done:
   li a0, 0x880
   csrw mie,a0
 
+
+  csrrs a0, mstatus, 0x8
+
+
   call main
 infinit_loop:
   j infinit_loop

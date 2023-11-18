@@ -3,9 +3,9 @@ module uart_receive (
   input wire        clk,
   input wire [31:0] clk_div,
   input wire        rx,
-  input wire        rx_finish,
   output reg        irq,
   output reg [7:0]  rx_data,
+  input wire        rx_finish,
   output reg        frame_err,
   output reg        busy
 );
@@ -16,6 +16,7 @@ module uart_receive (
   parameter STOP_BIT    = 4'b0011;
   parameter WAIT_READ   = 4'b0100;
   parameter FRAME_ERR   = 4'b0101;
+  parameter IRQ         = 4'b0110;
 
   reg [3:0] state;
 
@@ -75,12 +76,10 @@ module uart_receive (
           if(clk_cnt == (clk_div - 1)) begin
             clk_cnt <= 32'h0000_0000;
             if(rx == 1'b1) begin
-              state <= WAIT_READ;
-              //irq <= 1'b1;
+              state <= IRQ;//WAIT_READ;
               frame_err <= 1'b0;
             end else begin
               state <= FRAME_ERR;
-              //irq <= 1'b1;
               frame_err <= 1'b1;
             end
           end else begin
@@ -88,23 +87,24 @@ module uart_receive (
           end
           busy <= 1'b1;
         end
-        WAIT_READ: begin
+        IRQ:begin
           irq <= 1'b1;
-          state <= WAIT;
+          state <= WAIT_READ;
           busy <= 1'b0;
-          /*if(rx_finish) begin
-            irq <= 1'b0;
+        end
+        WAIT_READ: begin
+          irq <= 1'b0;
+          busy <= 1'b0;
+          if(rx_finish)
             state <= WAIT;
-            busy <= 1'b0;
-          end*/
+          else
+            state <= WAIT_READ;
         end
         FRAME_ERR:begin
-          if(rx_finish)begin
             state <= WAIT;
             irq <= 0;
             frame_err <= 0;
             busy <= 1'b0;
-          end
         end
         default: begin
           state     <= WAIT;

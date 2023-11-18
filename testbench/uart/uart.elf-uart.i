@@ -1634,13 +1634,9 @@ static inline unsigned int irq_pending(void)
 # 4 "uart.c" 2
 
 
-
-
-
-
 void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write(int n)
 {
-    while((((*(volatile uint32_t*)0x30000010)>>3) & 1));
+    while((((*(volatile uint32_t*)0x30000008)>>3) & 1));
     (*(volatile uint32_t*)0x30000004) = n;
 }
 
@@ -1650,7 +1646,7 @@ void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write_char(char c)
   uart_write_char('\r');
 
 
-    while((((*(volatile uint32_t*)0x30000010)>>3) & 1));
+    while((((*(volatile uint32_t*)0x30000008)>>3) & 1));
     (*(volatile uint32_t*)0x30000004) = c;
 }
 
@@ -1669,7 +1665,7 @@ char* __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
 int __attribute__ ( ( section ( ".mprj" ) ) ) uart_read()
 {
     int num;
-    if((((*(volatile uint32_t*)0x30000010)>>5) | 0) && (((*(volatile uint32_t*)0x30000010)>>4) | 0))
+    if((((*(volatile uint32_t*)0x30000008)>>5) | 0) && (((*(volatile uint32_t*)0x30000008)>>4) | 0))
         num = (*(volatile uint32_t*)0x30000000);
 
     return num;

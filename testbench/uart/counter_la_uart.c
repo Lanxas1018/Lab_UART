@@ -71,7 +71,7 @@ void main()
 	// I/O 6 is configured for the UART Tx line
 
     //reg_spi_enable = 1;
-    //reg_wb_enable = 1;
+    reg_wb_enable = 1;
 
     reg_mprj_io_31 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_30 = GPIO_MODE_MGMT_STD_OUTPUT;
@@ -143,7 +143,7 @@ void main()
 		uart_write(i);
 	}*/
 
-	uart_write_string("TEST!");
+	//uart_write_string("TEST!");
 
 	//reg_mprj_datal = uart_isr();
 

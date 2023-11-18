@@ -2,10 +2,6 @@
 #include <user_uart.h>
 #include <irq_vex.h>
 
-/*void __attribute__ ( ( section ( ".mprj" ) ) ) uart_reset_read_fifo()
-{
-    reg_uart_rst_rx_fifo = 1;
-}*/
 
 void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write(int n)
 {

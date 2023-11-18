@@ -219,34 +219,52 @@ isr:
 	.loc 5 27 14
 	and	a5,s1,a5
 	sw	a5,-20(s0)
-	.loc 5 29 15
+	.loc 5 30 15
 	lw	a5,-20(s0)
 	andi	a5,a5,4
-	.loc 5 29 8
-	beq	a5,zero,.L12
-	.loc 5 30 9
+	.loc 5 30 8
+	beq	a5,zero,.L13
+	.loc 5 31 9
 	li	a0,1
 	call	user_irq_0_ev_pending_write
-	.loc 5 33 27
-	lui	a5,%hi(counter)
-	lw	a4,%lo(counter)(a5)
-	li	a5,-65536
-	add	a4,a4,a5
-	.loc 5 33 17
-	lui	a5,%hi(counter)
-	sw	a4,%lo(counter)(a5)
-	.loc 5 34 10
+	.loc 5 32 15
+	li	a5,805306368
+	addi	a5,a5,8
+	lw	a5,0(a5)
+	.loc 5 32 47
+	srli	a5,a5,5
+	.loc 5 32 11
+	beq	a5,zero,.L11
+	.loc 5 32 63 discriminator 1
+	li	a5,805306368
+	addi	a5,a5,8
+	lw	a5,0(a5)
+	.loc 5 32 95 discriminator 1
+	srli	a5,a5,4
+	.loc 5 32 57 discriminator 1
+	beq	a5,zero,.L11
+	.loc 5 36 17
+ #APP
+# 36 "../../firmware/isr.c" 1
+	nop
+# 0 "" 2
+ #NO_APP
+.L11:
+	.loc 5 38 50
+	li	a5,805306368
+	lw	a4,0(a5)
+	.loc 5 38 14
 	li	a5,637534208
 	addi	a5,a5,12
-	.loc 5 34 43
-	lui	a4,%hi(counter)
-	lw	a4,%lo(counter)(a4)
+	.loc 5 38 83
+	slli	a4,a4,16
+	.loc 5 38 47
 	sw	a4,0(a5)
-	.loc 5 38 5
+	.loc 5 44 5
 	nop
-.L12:
+.L13:
 	nop
-	.loc 5 40 1
+	.loc 5 46 1
 	lw	ra,28(sp)
 	.cfi_restore 1
 	lw	s0,24(sp)
@@ -264,7 +282,7 @@ isr:
 	.file 6 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.4byte	0x170
+	.4byte	0x17c
 	.2byte	0x5
 	.byte	0x1
 	.byte	0x4
@@ -341,7 +359,7 @@ isr:
 	.4byte	.LFE321-.LFB321
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xb0
+	.4byte	0xbc
 	.byte	0x2
 	.4byte	.LASF11
 	.byte	0x5
@@ -351,6 +369,12 @@ isr:
 	.byte	0x2
 	.byte	0x91
 	.byte	0x6c
+	.byte	0xb
+	.string	"buf"
+	.byte	0x5
+	.byte	0x1c
+	.byte	0x9
+	.4byte	0x6a
 	.byte	0
 	.byte	0x3
 	.4byte	.LASF13
@@ -360,7 +384,7 @@ isr:
 	.4byte	.LFE320-.LFB320
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xd8
+	.4byte	0xe4
 	.byte	0x2
 	.4byte	.LASF12
 	.byte	0x4
@@ -379,7 +403,7 @@ isr:
 	.4byte	.LFE318-.LFB318
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x100
+	.4byte	0x10c
 	.byte	0x2
 	.4byte	.LASF15
 	.byte	0x4
@@ -390,7 +414,7 @@ isr:
 	.byte	0x91
 	.byte	0x6c
 	.byte	0
-	.byte	0xb
+	.byte	0xc
 	.4byte	.LASF16
 	.byte	0x3
 	.2byte	0x30a
@@ -399,8 +423,8 @@ isr:
 	.4byte	.LFE203-.LFB203
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x126
-	.byte	0xc
+	.4byte	0x132
+	.byte	0xd
 	.string	"v"
 	.byte	0x3
 	.2byte	0x30a
@@ -410,7 +434,7 @@ isr:
 	.byte	0x91
 	.byte	0x6c
 	.byte	0
-	.byte	0xd
+	.byte	0xe
 	.4byte	.LASF17
 	.byte	0x2
 	.byte	0x20
@@ -419,7 +443,7 @@ isr:
 	.4byte	.LFE23-.LFB23
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x153
+	.4byte	0x15f
 	.byte	0x4
 	.string	"v"
 	.byte	0x33
@@ -645,6 +669,21 @@ isr:
 	.byte	0
 	.byte	0
 	.byte	0xb
+	.byte	0x34
+	.byte	0
+	.byte	0x3
+	.byte	0x8
+	.byte	0x3a
+	.byte	0xb
+	.byte	0x3b
+	.byte	0xb
+	.byte	0x39
+	.byte	0xb
+	.byte	0x49
+	.byte	0x13
+	.byte	0
+	.byte	0
+	.byte	0xc
 	.byte	0x2e
 	.byte	0x1
 	.byte	0x3
@@ -669,7 +708,7 @@ isr:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0xc
+	.byte	0xd
 	.byte	0x5
 	.byte	0
 	.byte	0x3
@@ -686,7 +725,7 @@ isr:
 	.byte	0x18
 	.byte	0
 	.byte	0
-	.byte	0xd
+	.byte	0xe
 	.byte	0x2e
 	.byte	0x1
 	.byte	0x3

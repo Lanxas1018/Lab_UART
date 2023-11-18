@@ -1648,7 +1648,9 @@ void main()
 {
 
     int mask;
-# 76 "counter_la_uart.c"
+# 74 "counter_la_uart.c"
+    (*(volatile uint32_t*) (0xf0000000L + 0x3800L)) = 1;
+
     (*(volatile uint32_t*)0x260000a0) = 0x1809;
     (*(volatile uint32_t*)0x2600009c) = 0x1809;
     (*(volatile uint32_t*)0x26000098) = 0x1809;
@@ -1704,13 +1706,7 @@ void main()
 
 
  (*(volatile uint32_t*) ((0xf0000000L + 0x3010L) + 8)) = (*(volatile uint32_t*) ((0xf0000000L + 0x3000L) + 8)) = 0x00000000;
-# 146 "counter_la_uart.c"
- uart_write_string("TEST!");
-
-
-
-
-
+# 152 "counter_la_uart.c"
  (*(volatile uint32_t*)0x2600000c) = 0xAB510000;
 
 

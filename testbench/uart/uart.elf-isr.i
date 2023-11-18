@@ -1659,13 +1659,19 @@ void isr(void)
 
 
     uint32_t irqs = irq_pending() & irq_getmask();
+    int buf;
 
     if ( irqs & (1 << 2)) {
         user_irq_0_ev_pending_write(1);
+        if((((*(volatile uint32_t*)0x30000008)>>5) | 0) && (((*(volatile uint32_t*)0x30000008)>>4) | 0))
 
 
-        counter = counter - 0x10000;
-        (*(volatile uint32_t*)0x2600000c) = counter;
+
+                asm volatile ("nop");
+
+            (*(volatile uint32_t*)0x2600000c) = (*(volatile uint32_t*)0x30000000) << 16;
+
+
     }
 
 

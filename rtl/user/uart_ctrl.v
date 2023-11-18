@@ -24,13 +24,7 @@ localparam RX_DATA  = 32'h3000_0000;
 
 localparam TX_DATA	= 32'h3000_0004;
 
-//localparam CTRL_REG = 32'h3000_0008;
-
-localparam RST_TX_FIFO = 32'h3000_0008;
-
-localparam RST_RX_FIFO = 32'h3000_000c;
-
-localparam STAT_REG = 32'h3000_0010;
+localparam STAT_REG = 32'h3000_0008;
 
 //+------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
 //|RX_DATA |  RESERVERD  |                        DATA BITS                              |
@@ -48,9 +42,6 @@ localparam STAT_REG = 32'h3000_0010;
 
 reg [31:0] rx_buffer;
 reg [31:0] tx_buffer;
-//reg [31:0] ctrl_reg;
-//reg [31:0] rst_tx_fifo;
-//reg [31:0] rst_rx_fifo;
 reg [31:0] stat_reg;    
 reg tx_start_local;
 
@@ -94,7 +85,7 @@ always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         stat_reg <= 32'h0000_0005;
     end else begin
-        if(i_wb_valid)begin
+        if(i_wb_valid && !i_wb_we)begin
             if(i_wb_adr==STAT_REG)
                 stat_reg[5:4] <= 2'b00;
         end
@@ -104,41 +95,17 @@ always@(posedge clk or negedge rst_n)begin
         else
             stat_reg[3:2] <= 2'b01;
 
-        if(i_frame_err)
+        if(i_frame_err && i_rx_busy)
             stat_reg[5] <= 1'b1;
-        //else if(i_rx_busy)
-            //stat_reg[1:0] <= 2'b10;
-        else if(stat_reg[1:0]==2'b10)
+        else if(i_irq && !stat_reg[1] && !i_frame_err)
+            stat_reg[1:0] <= 2'b10;
+        else if(i_rx_busy && stat_reg[1:0]==2'b10)
             stat_reg[4] <= 1'b1;
+        else if((i_wb_valid && i_wb_adr==RX_DATA && !i_wb_we && stat_reg[1:0]==2'b10) || i_frame_err)
+            stat_reg[1:0] <= 2'b01;
     end
 end
 
-/*always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)begin
-        ctrl_reg <= 32'h00000000;
-    end else begin
-        if(i_wb_valid && i_wb_we && i_wb_adr==CTRL_REG) 
-            ctrl_reg <= i_wb_dat;
-    end
-end*/
-
-/*always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)begin
-        rst_tx_fifo <= 32'h00000000;
-    end else begin
-        if(i_wb_valid && i_wb_we && i_wb_adr==RST_TX_FIFO)
-            rst_tx_fifo <= i_wb_dat;
-    end
-end*/
-
-/*always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)begin
-        rst_rx_fifo <= 32'h00000000;
-    end else begin
-        if(i_wb_valid && i_wb_we && i_wb_adr==RST_RX_FIFO)
-            rst_rx_fifo <= i_wb_dat;
-    end
-end*/
 
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n || i_tx_start_clear)begin
@@ -191,7 +158,7 @@ always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
         o_rx_finish <= 1'b0;
     end else begin
-        if((i_wb_valid && i_wb_adr==RX_DATA && !i_wb_we) || i_frame_err)
+        if((i_wb_valid && i_wb_adr==RX_DATA && !i_wb_we && stat_reg[1:0]==2'b10) || i_frame_err)
             o_rx_finish <= 1'b1;
         else 
             o_rx_finish <= 1'b0;

@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Thu Nov 16 12:17:49 2023
+[*] Sat Nov 18 03:20:21 2023
 [*]
 [dumpfile] "/home/ubuntu/Lab_UART_V2/testbench/uart/uart.vcd"
-[dumpfile_mtime] "Thu Nov 16 12:09:38 2023"
-[dumpfile_size] 470040606
+[dumpfile_mtime] "Sat Nov 18 03:20:09 2023"
+[dumpfile_size] 158125230
 [savefile] "/home/ubuntu/Lab_UART_V2/testbench/uart/waveform.gtkw"
-[timestart] 2038930000
+[timestart] 1820400000
 [size] 3696 1830
 [pos] -1 -1
-*-23.000000 2086762500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-26.000000 2630337500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] uart_tb.
 [treeopen] uart_tb.uut.
 [treeopen] uart_tb.uut.mprj.
@@ -18,8 +18,8 @@
 [treeopen] uart_tb.uut.soc.
 [treeopen] uart_tb.uut.soc.core.
 [treeopen] uart_tb.uut.soc.core.VexRiscv.
-[sst_width] 620
-[signals_width] 666
+[sst_width] 574
+[signals_width] 630
 [sst_expanded] 1
 [sst_vpaned_height] 1041
 @200
@@ -59,7 +59,7 @@ uart_tb.uut.mprj.uart.receive.rx_data[7:0]
 -
 @28
 uart_tb.uut.mprj.uart.receive.frame_err
-uart_tb.uut.mprj.uart.receive.rx_finish
+@29
 uart_tb.uut.mprj.uart.receive.irq
 @200
 -#ISR
@@ -79,6 +79,8 @@ uart_tb.uut.mprj.uart.ctrl.o_tx_start
 uart_tb.uut.mprj.uart.ctrl.o_wb_dat[31:0]
 @28
 uart_tb.uut.mprj.uart.ctrl.i_wb_valid
+@22
+uart_tb.uut.mprj.uart.ctrl.rx_buffer[31:0]
 @200
 -#tbuart
 @28
@@ -94,7 +96,6 @@ uart_tb.tbuart.recv_buf_data[79:0]
 uart_tb.tbuart.tx_start
 uart_tb.tbuart.ser_tx
 @200
--
 -#mprj
 @28
 uart_tb.uut.mprj.uart.wbs_ack_o
@@ -105,24 +106,17 @@ uart_tb.uut.mprj.uart.wbs_stb_i
 uart_tb.uut.mprj.uart.wbs_adr_i[31:0]
 uart_tb.uut.mprj.uart.wbs_dat_i[31:0]
 uart_tb.uut.mprj.uart.wbs_dat_o[31:0]
-@28
-uart_tb.uut.mprj.uart.wbs_stb_i
 @200
--
 -#VexRiscV
 @22
 uart_tb.uut.soc.core.VexRiscv.execute_PC[31:0]
 @28
 uart_tb.uut.soc.core.VexRiscv.externalInterrupt
-@29
 uart_tb.uut.soc.core.VexRiscv.CsrPlugin_mstatus_MIE
-@28
 uart_tb.uut.soc.core.VexRiscv.CsrPlugin_mstatus_MPIE
 uart_tb.uut.soc.core.VexRiscv.CsrPlugin_mie_MEIE
 uart_tb.uut.soc.core.VexRiscv.CsrPlugin_mip_MEIP
 @200
--
--
 -
 -
 -

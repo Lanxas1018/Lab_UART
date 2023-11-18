@@ -25,13 +25,19 @@ void isr(void)
 
 #else
     uint32_t irqs = irq_pending() & irq_getmask();
+    int buf;
 
     if ( irqs & (1 << USER_IRQ_0_INTERRUPT)) {
         user_irq_0_ev_pending_write(1); //Clear Interrupt Pending Event
-        //if(((reg_uart_stat>>5) | 0) && ((reg_uart_stat>>4) | 0))
-           //reg_mprj_datal = 0xABC5;//reg_rx_data;
-        counter = counter - 0x10000;
-        reg_mprj_datal = counter;
+        if(((reg_uart_stat>>5) | 0) && ((reg_uart_stat>>4) | 0))
+           //reg_mprj_datal = reg_rx_data;
+           //buf = reg_rx_data;
+           //for(int i = 0; i < 1; i++)
+                asm volatile ("nop");
+
+            reg_mprj_datal = reg_rx_data << 16;
+        //counter = counter - 0x10000;
+        //reg_mprj_datal = counter;
     }
 #endif
 

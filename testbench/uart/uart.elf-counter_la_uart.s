@@ -183,11 +183,6 @@ irq_setmask:
 	.cfi_endproc
 .LFE319:
 	.size	irq_setmask, .-irq_setmask
-	.section	.rodata
-	.align	2
-.LC0:
-	.string	"TEST!"
-	.text
 	.align	2
 	.globl	main
 	.type	main, @function
@@ -204,6 +199,12 @@ main:
 	.cfi_offset 8, -8
 	addi	s0,sp,32
 	.cfi_def_cfa 8, 0
+	.loc 5 74 6
+	li	a5,-268419072
+	addi	a5,a5,-2048
+	.loc 5 74 53
+	li	a4,1
+	sw	a4,0(a5)
 	.loc 5 76 6
 	li	a5,637534208
 	addi	a5,a5,160
@@ -506,10 +507,6 @@ main:
 	addi	a4,a4,24
 	.loc 5 130 56
 	sw	a5,0(a4)
-	.loc 5 146 2
-	lui	a5,%hi(.LC0)
-	addi	a0,a5,%lo(.LC0)
-	call	uart_write_string
 	.loc 5 152 3
 	li	a5,637534208
 	addi	a5,a5,12
@@ -549,7 +546,7 @@ main:
 	.file 6 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.4byte	0x16a
+	.4byte	0x15c
 	.2byte	0x5
 	.byte	0x1
 	.byte	0x4
@@ -611,21 +608,13 @@ main:
 	.byte	0x9
 	.4byte	.LASF19
 	.byte	0x5
-	.byte	0x1c
-	.byte	0xd
-	.4byte	0x86
-	.byte	0xa
-	.byte	0
-	.byte	0xb
-	.4byte	.LASF20
-	.byte	0x5
 	.byte	0x2b
 	.byte	0x6
 	.4byte	.LFB321
 	.4byte	.LFE321-.LFB321
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xac
+	.4byte	0x9e
 	.byte	0x2
 	.4byte	.LASF11
 	.byte	0x5
@@ -644,8 +633,8 @@ main:
 	.4byte	.LFE319-.LFB319
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xd1
-	.byte	0xc
+	.4byte	0xc3
+	.byte	0xa
 	.4byte	.LASF11
 	.byte	0x4
 	.byte	0x1d
@@ -655,8 +644,8 @@ main:
 	.byte	0x91
 	.byte	0x6c
 	.byte	0
-	.byte	0xd
-	.4byte	.LASF21
+	.byte	0xb
+	.4byte	.LASF20
 	.byte	0x4
 	.byte	0x16
 	.byte	0x1c
@@ -665,7 +654,7 @@ main:
 	.4byte	.LFE318-.LFB318
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0xfb
+	.4byte	0xed
 	.byte	0x2
 	.4byte	.LASF11
 	.byte	0x4
@@ -676,7 +665,7 @@ main:
 	.byte	0x91
 	.byte	0x6c
 	.byte	0
-	.byte	0xe
+	.byte	0xc
 	.4byte	.LASF13
 	.byte	0x3
 	.2byte	0x325
@@ -685,8 +674,8 @@ main:
 	.4byte	.LFE209-.LFB209
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x121
-	.byte	0xf
+	.4byte	0x113
+	.byte	0xd
 	.string	"v"
 	.byte	0x3
 	.2byte	0x325
@@ -704,7 +693,7 @@ main:
 	.4byte	.LFE23-.LFB23
 	.byte	0x1
 	.byte	0x9c
-	.4byte	0x14d
+	.4byte	0x13f
 	.byte	0x4
 	.string	"v"
 	.byte	0x33
@@ -893,30 +882,6 @@ main:
 	.byte	0xb
 	.byte	0x39
 	.byte	0xb
-	.byte	0x3c
-	.byte	0x19
-	.byte	0x1
-	.byte	0x13
-	.byte	0
-	.byte	0
-	.byte	0xa
-	.byte	0x18
-	.byte	0
-	.byte	0
-	.byte	0
-	.byte	0xb
-	.byte	0x2e
-	.byte	0x1
-	.byte	0x3f
-	.byte	0x19
-	.byte	0x3
-	.byte	0xe
-	.byte	0x3a
-	.byte	0xb
-	.byte	0x3b
-	.byte	0xb
-	.byte	0x39
-	.byte	0xb
 	.byte	0x11
 	.byte	0x1
 	.byte	0x12
@@ -929,7 +894,7 @@ main:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0xc
+	.byte	0xa
 	.byte	0x5
 	.byte	0
 	.byte	0x3
@@ -946,7 +911,7 @@ main:
 	.byte	0x18
 	.byte	0
 	.byte	0
-	.byte	0xd
+	.byte	0xb
 	.byte	0x2e
 	.byte	0x1
 	.byte	0x3
@@ -973,7 +938,7 @@ main:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0xe
+	.byte	0xc
 	.byte	0x2e
 	.byte	0x1
 	.byte	0x3
@@ -998,7 +963,7 @@ main:
 	.byte	0x13
 	.byte	0
 	.byte	0
-	.byte	0xf
+	.byte	0xd
 	.byte	0x5
 	.byte	0
 	.byte	0x3
@@ -1037,17 +1002,15 @@ main:
 	.string	"csr_write_simple"
 .LASF6:
 	.string	"unsigned char"
-.LASF19:
-	.string	"uart_write_string"
 .LASF8:
 	.string	"long unsigned int"
 .LASF7:
 	.string	"short unsigned int"
 .LASF17:
 	.string	"GNU C17 12.1.0 -mabi=ilp32 -mtune=rocket -misa-spec=2.2 -march=rv32i -g -ffreestanding"
-.LASF20:
+.LASF19:
 	.string	"main"
-.LASF21:
+.LASF20:
 	.string	"irq_getmask"
 .LASF12:
 	.string	"irq_setmask"

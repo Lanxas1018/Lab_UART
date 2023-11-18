@@ -191,7 +191,7 @@ irq_pending:
 uart_write:
 .LFB321:
 	.file 5 "uart.c"
-	.loc 5 11 1
+	.loc 5 7 1
 	.cfi_startproc
 	addi	sp,sp,-32
 	.cfi_def_cfa_offset 32
@@ -200,23 +200,23 @@ uart_write:
 	addi	s0,sp,32
 	.cfi_def_cfa 8, 0
 	sw	a0,-20(s0)
-	.loc 5 12 10
+	.loc 5 8 10
 	nop
 .L10:
-	.loc 5 12 14 discriminator 1
+	.loc 5 8 14 discriminator 1
 	li	a5,805306368
-	addi	a5,a5,16
+	addi	a5,a5,8
 	lw	a5,0(a5)
-	.loc 5 12 11 discriminator 1
+	.loc 5 8 11 discriminator 1
 	andi	a5,a5,8
 	bne	a5,zero,.L10
-	.loc 5 13 6
+	.loc 5 9 6
 	li	a5,805306368
 	addi	a5,a5,4
-	.loc 5 13 39
+	.loc 5 9 39
 	lw	a4,-20(s0)
 	sw	a4,0(a5)
-	.loc 5 14 1
+	.loc 5 10 1
 	nop
 	lw	s0,28(sp)
 	.cfi_restore 8
@@ -232,7 +232,7 @@ uart_write:
 	.type	uart_write_char, @function
 uart_write_char:
 .LFB322:
-	.loc 5 17 1
+	.loc 5 13 1
 	.cfi_startproc
 	addi	sp,sp,-32
 	.cfi_def_cfa_offset 32
@@ -244,31 +244,31 @@ uart_write_char:
 	.cfi_def_cfa 8, 0
 	mv	a5,a0
 	sb	a5,-17(s0)
-	.loc 5 18 5
+	.loc 5 14 5
 	lbu	a4,-17(s0)
 	li	a5,10
 	bne	a4,a5,.L14
-	.loc 5 19 3
+	.loc 5 15 3
 	li	a0,13
 	call	uart_write_char
 .L14:
-	.loc 5 22 10
+	.loc 5 18 10
 	nop
 .L13:
-	.loc 5 22 14 discriminator 1
+	.loc 5 18 14 discriminator 1
 	li	a5,805306368
-	addi	a5,a5,16
+	addi	a5,a5,8
 	lw	a5,0(a5)
-	.loc 5 22 11 discriminator 1
+	.loc 5 18 11 discriminator 1
 	andi	a5,a5,8
 	bne	a5,zero,.L13
-	.loc 5 23 6
+	.loc 5 19 6
 	li	a5,805306368
 	addi	a5,a5,4
-	.loc 5 23 39
+	.loc 5 19 39
 	lbu	a4,-17(s0)
 	sw	a4,0(a5)
-	.loc 5 24 1
+	.loc 5 20 1
 	nop
 	lw	ra,28(sp)
 	.cfi_restore 1
@@ -286,7 +286,7 @@ uart_write_char:
 	.type	uart_write_string, @function
 uart_write_string:
 .LFB323:
-	.loc 5 27 1
+	.loc 5 23 1
 	.cfi_startproc
 	addi	sp,sp,-32
 	.cfi_def_cfa_offset 32
@@ -297,23 +297,23 @@ uart_write_string:
 	addi	s0,sp,32
 	.cfi_def_cfa 8, 0
 	sw	a0,-20(s0)
-	.loc 5 28 11
+	.loc 5 24 11
 	j	.L16
 .L17:
-	.loc 5 29 28
+	.loc 5 25 28
 	lw	a5,-20(s0)
 	addi	a4,a5,1
 	sw	a4,-20(s0)
-	.loc 5 29 9
+	.loc 5 25 9
 	lbu	a5,0(a5)
 	mv	a0,a5
 	call	uart_write_char
 .L16:
-	.loc 5 28 12
+	.loc 5 24 12
 	lw	a5,-20(s0)
 	lbu	a5,0(a5)
 	bne	a5,zero,.L17
-	.loc 5 30 1
+	.loc 5 26 1
 	nop
 	nop
 	lw	ra,28(sp)
@@ -332,7 +332,7 @@ uart_write_string:
 	.type	uart_read_char, @function
 uart_read_char:
 .LFB324:
-	.loc 5 34 1
+	.loc 5 30 1
 	.cfi_startproc
 	addi	sp,sp,-16
 	.cfi_def_cfa_offset 16
@@ -340,7 +340,7 @@ uart_read_char:
 	.cfi_offset 8, -4
 	addi	s0,sp,16
 	.cfi_def_cfa 8, 0
-	.loc 5 36 1
+	.loc 5 32 1
 	nop
 	mv	a0,a5
 	lw	s0,12(sp)
@@ -357,7 +357,7 @@ uart_read_char:
 	.type	uart_read, @function
 uart_read:
 .LFB325:
-	.loc 5 39 1
+	.loc 5 35 1
 	.cfi_startproc
 	addi	sp,sp,-32
 	.cfi_def_cfa_offset 32
@@ -365,31 +365,31 @@ uart_read:
 	.cfi_offset 8, -4
 	addi	s0,sp,32
 	.cfi_def_cfa 8, 0
-	.loc 5 41 11
+	.loc 5 37 11
 	li	a5,805306368
-	addi	a5,a5,16
+	addi	a5,a5,8
 	lw	a5,0(a5)
-	.loc 5 41 43
+	.loc 5 37 43
 	srli	a5,a5,5
-	.loc 5 41 7
+	.loc 5 37 7
 	beq	a5,zero,.L20
-	.loc 5 41 59 discriminator 1
+	.loc 5 37 59 discriminator 1
 	li	a5,805306368
-	addi	a5,a5,16
+	addi	a5,a5,8
 	lw	a5,0(a5)
-	.loc 5 41 91 discriminator 1
+	.loc 5 37 91 discriminator 1
 	srli	a5,a5,4
-	.loc 5 41 53 discriminator 1
+	.loc 5 37 53 discriminator 1
 	beq	a5,zero,.L20
-	.loc 5 42 16
+	.loc 5 38 16
 	li	a5,805306368
 	lw	a5,0(a5)
-	.loc 5 42 13
+	.loc 5 38 13
 	sw	a5,-20(s0)
 .L20:
-	.loc 5 44 12
+	.loc 5 40 12
 	lw	a5,-20(s0)
-	.loc 5 45 1
+	.loc 5 41 1
 	mv	a0,a5
 	lw	s0,28(sp)
 	.cfi_restore 8
@@ -405,7 +405,7 @@ uart_read:
 	.type	uart_isr, @function
 uart_isr:
 .LFB326:
-	.loc 5 48 1
+	.loc 5 44 1
 	.cfi_startproc
 	addi	sp,sp,-32
 	.cfi_def_cfa_offset 32
@@ -417,30 +417,30 @@ uart_isr:
 	.cfi_offset 9, -12
 	addi	s0,sp,32
 	.cfi_def_cfa 8, 0
-	.loc 5 50 21
+	.loc 5 46 21
 	call	irq_pending
 	mv	s1,a0
-	.loc 5 50 37
+	.loc 5 46 37
 	call	irq_getmask
 	mv	a5,a0
-	.loc 5 50 14
+	.loc 5 46 14
 	and	a5,s1,a5
 	sw	a5,-24(s0)
-	.loc 5 52 15
+	.loc 5 48 15
 	lw	a5,-24(s0)
 	andi	a5,a5,4
-	.loc 5 52 8
+	.loc 5 48 8
 	beq	a5,zero,.L23
-	.loc 5 53 15
+	.loc 5 49 15
 	call	uart_read
 	sw	a0,-20(s0)
-	.loc 5 54 9
+	.loc 5 50 9
 	li	a0,1
 	call	user_irq_0_ev_pending_write
 .L23:
-	.loc 5 57 12
+	.loc 5 53 12
 	lw	a5,-20(s0)
-	.loc 5 58 1
+	.loc 5 54 1
 	mv	a0,a5
 	lw	ra,28(sp)
 	.cfi_restore 1
@@ -522,7 +522,7 @@ uart_isr:
 	.byte	0xc
 	.4byte	.LASF12
 	.byte	0x5
-	.byte	0x2f
+	.byte	0x2b
 	.byte	0x2f
 	.4byte	0x6a
 	.4byte	.LFB326
@@ -532,7 +532,7 @@ uart_isr:
 	.4byte	0xaf
 	.byte	0x4
 	.string	"num"
-	.byte	0x31
+	.byte	0x2d
 	.4byte	0x6a
 	.byte	0x2
 	.byte	0x91
@@ -540,7 +540,7 @@ uart_isr:
 	.byte	0x3
 	.4byte	.LASF11
 	.byte	0x5
-	.byte	0x32
+	.byte	0x2e
 	.byte	0xe
 	.4byte	0x50
 	.byte	0x2
@@ -550,7 +550,7 @@ uart_isr:
 	.byte	0xd
 	.4byte	.LASF13
 	.byte	0x5
-	.byte	0x26
+	.byte	0x22
 	.byte	0x2f
 	.4byte	0x6a
 	.4byte	.LFB325
@@ -560,7 +560,7 @@ uart_isr:
 	.4byte	0xd7
 	.byte	0x4
 	.string	"num"
-	.byte	0x28
+	.byte	0x24
 	.4byte	0x6a
 	.byte	0x2
 	.byte	0x91
@@ -569,7 +569,7 @@ uart_isr:
 	.byte	0xe
 	.4byte	.LASF28
 	.byte	0x5
-	.byte	0x21
+	.byte	0x1d
 	.byte	0x31
 	.4byte	0xed
 	.4byte	.LFB324
@@ -586,7 +586,7 @@ uart_isr:
 	.4byte	0xf2
 	.byte	0x6
 	.4byte	.LASF15
-	.byte	0x1a
+	.byte	0x16
 	.4byte	.LFB323
 	.4byte	.LFE323-.LFB323
 	.byte	0x1
@@ -595,7 +595,7 @@ uart_isr:
 	.byte	0x2
 	.string	"s"
 	.byte	0x5
-	.byte	0x1a
+	.byte	0x16
 	.byte	0x4e
 	.4byte	0x120
 	.byte	0x2
@@ -606,7 +606,7 @@ uart_isr:
 	.4byte	0xf9
 	.byte	0x6
 	.4byte	.LASF16
-	.byte	0x10
+	.byte	0xc
 	.4byte	.LFB322
 	.4byte	.LFE322-.LFB322
 	.byte	0x1
@@ -615,7 +615,7 @@ uart_isr:
 	.byte	0x2
 	.string	"c"
 	.byte	0x5
-	.byte	0x10
+	.byte	0xc
 	.byte	0x45
 	.4byte	0xf2
 	.byte	0x2
@@ -625,7 +625,7 @@ uart_isr:
 	.byte	0x10
 	.4byte	.LASF17
 	.byte	0x5
-	.byte	0xa
+	.byte	0x6
 	.byte	0x30
 	.4byte	.LFB321
 	.4byte	.LFE321-.LFB321
@@ -635,7 +635,7 @@ uart_isr:
 	.byte	0x2
 	.string	"n"
 	.byte	0x5
-	.byte	0xa
+	.byte	0x6
 	.byte	0x3f
 	.4byte	0x6a
 	.byte	0x2
