@@ -1,8 +1,8 @@
-# 0 "uart.c"
+# 0 "../../firmware/uart.c"
 # 1 "/home/ubuntu/Lab_UART_V2/testbench/uart//"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "uart.c"
+# 1 "../../firmware/uart.c"
 # 1 "../../firmware/defs.h" 1
 # 21 "../../firmware/defs.h"
 # 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 1 3 4
@@ -1594,9 +1594,9 @@ extern uint32_t sram;
 
 extern uint32_t flashio_worker_begin;
 extern uint32_t flashio_worker_end;
-# 2 "uart.c" 2
+# 2 "../../firmware/uart.c" 2
 # 1 "../../firmware/user_uart.h" 1
-# 3 "uart.c" 2
+# 3 "../../firmware/uart.c" 2
 # 1 "../../firmware/irq_vex.h" 1
 # 9 "../../firmware/irq_vex.h"
 # 1 "../../firmware/csr.h" 1
@@ -1631,7 +1631,7 @@ static inline unsigned int irq_pending(void)
  asm volatile ("csrr %0, %1" : "=r"(pending) : "i"(0xFC0));
  return pending;
 }
-# 4 "uart.c" 2
+# 4 "../../firmware/uart.c" 2
 
 
 void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write(int n)
@@ -1657,7 +1657,7 @@ void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write_string(const char *s)
 }
 
 
-char __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
+char* __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
 {
 
 }
@@ -1665,11 +1665,20 @@ char __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
 int __attribute__ ( ( section ( ".mprj" ) ) ) uart_read()
 {
     int num;
-    if(((((*(volatile uint32_t*)0x30000008)>>5) | 0) == 0) && ((((*(volatile uint32_t*)0x30000008)>>4) | 0) == 0)){
-        for(int i = 0; i < 1; i++)
-            asm volatile ("nop");
-
+    if((((*(volatile uint32_t*)0x30000008)>>5) | 0) && (((*(volatile uint32_t*)0x30000008)>>4) | 0))
         num = (*(volatile uint32_t*)0x30000000);
+
+    return num;
+}
+
+int __attribute__ ( ( section ( ".mprj" ) ) ) uart_isr()
+{
+    int num;
+    uint32_t irqs = irq_pending() & irq_getmask();
+
+    if ( irqs & (1 << 2)) {
+        num = uart_read();
+        user_irq_0_ev_pending_write(1);
     }
 
     return num;

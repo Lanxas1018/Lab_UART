@@ -32,9 +32,6 @@ localparam STAT_REG = 32'h3000_0008;
 //+------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
 //|TX_DATA |  RESERVERD  |                        DATA BITS                              |
 //|        |    31-8     |  7    |  6    |  5    |  4    |  3    |  2    |  1    |  0    |
-//+------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-//|CTRL_REG|  RESERVERD  |  Reset rx fifo   |  Reset tx fifo   |
-//|        |    31-2     |  1               |  0               |
 //+------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
 //|STAT_REG|  RESERVERD  |  Frame Err  |  Overrun Err  |  Tx_full  |  Tx_empty  |  Rx_full  |  Rx_empty |
 //|        |    31-6     |  5          |  4            |  3        |  2         |  1        |  0        |
@@ -44,42 +41,6 @@ reg [31:0] rx_buffer;
 reg [31:0] tx_buffer;
 reg [31:0] stat_reg;    
 reg tx_start_local;
-
-/*always@(posedge clk or negedge rst_n)begin
-    if(!rst_n)begin
-        stat_reg <= 32'h0000_0005;
-    end else begin
-        if(i_wb_valid)begin
-            case(i_wb_adr)
-                RX_DATA:begin
-                    if(i_frame_err)
-                        stat_reg[5] <= 1'b1;
-                    else if(stat_reg[1:0]==2'b01)
-                        stat_reg[1:0] <= 2'b10;
-                    else if(stat_reg[1:0]==2'b10)
-                        stat_reg[4] <= 1'b1;
-
-                end
-                TX_DATA:begin
-                    stat_reg[3:2] <= 2'b10;
-                end
-                CTRL_REG:begin
-                    if(i_wb_dat[1]) stat_reg[1:0] = 2'b01;
-                    if(i_wb_dat[0]) stat_reg[3:2] = 2'b01;                    
-                end
-                RST_TX_FIFO:begin
-                    if(i_wb_dat == 1)   stat_reg[3:2] = 2'b01;
-                end
-                RST_RX_FIFO:begin
-                    if(i_wb_dat == 1)   stat_reg[1:0] = 2'b01;
-                end
-                STAT_REG:begin
-                    stat_reg[5:4] <= 2'b00;
-                end
-            endcase
-        end
-    end
-end*/
 
 always@(posedge clk or negedge rst_n)begin
     if(!rst_n)begin
@@ -138,10 +99,7 @@ always@(posedge clk or negedge rst_n)begin
         if(i_wb_valid && !i_wb_we)begin
             case(i_wb_adr)
                 RX_DATA:begin
-                    //if(rst_rx_fifo==1)
-                        //o_wb_dat <= 32'h00000000;
-                    //else
-                        o_wb_dat <= rx_buffer;
+                    o_wb_dat <= rx_buffer;
                 end
                 STAT_REG:begin
                     o_wb_dat <= stat_reg;

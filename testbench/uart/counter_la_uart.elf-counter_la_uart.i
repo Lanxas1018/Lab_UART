@@ -1,8 +1,9 @@
-# 0 "uart.c"
+# 0 "counter_la_uart.c"
 # 1 "/home/ubuntu/Lab_UART_V2/testbench/uart//"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "uart.c"
+# 1 "counter_la_uart.c"
+# 19 "counter_la_uart.c"
 # 1 "../../firmware/defs.h" 1
 # 21 "../../firmware/defs.h"
 # 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 1 3 4
@@ -1594,9 +1595,10 @@ extern uint32_t sram;
 
 extern uint32_t flashio_worker_begin;
 extern uint32_t flashio_worker_end;
-# 2 "uart.c" 2
+# 20 "counter_la_uart.c" 2
 # 1 "../../firmware/user_uart.h" 1
-# 3 "uart.c" 2
+# 21 "counter_la_uart.c" 2
+
 # 1 "../../firmware/irq_vex.h" 1
 # 9 "../../firmware/irq_vex.h"
 # 1 "../../firmware/csr.h" 1
@@ -1631,46 +1633,88 @@ static inline unsigned int irq_pending(void)
  asm volatile ("csrr %0, %1" : "=r"(pending) : "i"(0xFC0));
  return pending;
 }
-# 4 "uart.c" 2
+# 23 "counter_la_uart.c" 2
 
 
-void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write(int n)
-{
-    while((((*(volatile uint32_t*)0x30000008)>>3) & 1));
-    (*(volatile uint32_t*)0x30000004) = n;
-}
 
-void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write_char(char c)
-{
- if (c == '\n')
-  uart_write_char('\r');
-
-
-    while((((*(volatile uint32_t*)0x30000008)>>3) & 1));
-    (*(volatile uint32_t*)0x30000004) = c;
-}
-
-void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write_string(const char *s)
-{
-    while (*s)
-        uart_write_char(*(s++));
-}
-
-
-char __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
+extern void uart_write();
+extern void uart_write_char();
+extern void uart_write_string();
+extern void uart_reset_write_fifo();
+extern int uart_isr();
+extern int uart_read();
+# 43 "counter_la_uart.c"
+void main()
 {
 
-}
+    int mask;
+# 74 "counter_la_uart.c"
+    (*(volatile uint32_t*) (0xf0000000L + 0x3800L)) = 1;
 
-int __attribute__ ( ( section ( ".mprj" ) ) ) uart_read()
-{
-    int num;
-    if(((((*(volatile uint32_t*)0x30000008)>>5) | 0) == 0) && ((((*(volatile uint32_t*)0x30000008)>>4) | 0) == 0)){
-        for(int i = 0; i < 1; i++)
-            asm volatile ("nop");
+    (*(volatile uint32_t*)0x260000a0) = 0x1809;
+    (*(volatile uint32_t*)0x2600009c) = 0x1809;
+    (*(volatile uint32_t*)0x26000098) = 0x1809;
+    (*(volatile uint32_t*)0x26000094) = 0x1809;
+    (*(volatile uint32_t*)0x26000090) = 0x1809;
+    (*(volatile uint32_t*)0x2600008c) = 0x1809;
+    (*(volatile uint32_t*)0x26000088) = 0x1809;
+    (*(volatile uint32_t*)0x26000084) = 0x1809;
+    (*(volatile uint32_t*)0x26000080) = 0x1809;
+    (*(volatile uint32_t*)0x2600007c) = 0x1809;
+    (*(volatile uint32_t*)0x26000078) = 0x1809;
+    (*(volatile uint32_t*)0x26000074) = 0x1809;
+    (*(volatile uint32_t*)0x26000070) = 0x1809;
+    (*(volatile uint32_t*)0x2600006c) = 0x1809;
+    (*(volatile uint32_t*)0x26000068) = 0x1809;
+    (*(volatile uint32_t*)0x26000064) = 0x1809;
 
-        num = (*(volatile uint32_t*)0x30000000);
-    }
+    (*(volatile uint32_t*)0x26000060) = 0x1809;
+    (*(volatile uint32_t*)0x2600005c) = 0x1809;
+    (*(volatile uint32_t*)0x26000058) = 0x1809;
+    (*(volatile uint32_t*)0x26000054) = 0x1809;
+    (*(volatile uint32_t*)0x26000050) = 0x1809;
+    (*(volatile uint32_t*)0x2600004c) = 0x1809;
+    (*(volatile uint32_t*)0x26000048) = 0x1809;
+    (*(volatile uint32_t*)0x26000044) = 0x1809;
+    (*(volatile uint32_t*)0x26000040) = 0x1809;
+    (*(volatile uint32_t*)0x26000034) = 0x1809;
+    (*(volatile uint32_t*)0x26000030) = 0x1809;
+    (*(volatile uint32_t*)0x2600002c) = 0x1809;
+    (*(volatile uint32_t*)0x26000028) = 0x1809;
+    (*(volatile uint32_t*)0x26000024) = 0x1809;
 
-    return num;
+    (*(volatile uint32_t*)0x2600003c) = 0x1808;
+    (*(volatile uint32_t*)0x26000038) = 0x0402;
+
+
+
+ (*(volatile uint32_t*)0x26000000) = 1;
+ while ((*(volatile uint32_t*)0x26000000) == 1);
+
+
+
+ (*(volatile uint32_t*) ((0xf0000000L + 0x3010L) + 12)) = (*(volatile uint32_t*) ((0xf0000000L + 0x3000L) + 12)) = 0x00000000;
+ (*(volatile uint32_t*) ((0xf0000000L + 0x3010L) + 8)) = (*(volatile uint32_t*) ((0xf0000000L + 0x3000L) + 8)) = 0xFFFFFFFF;
+ (*(volatile uint32_t*) ((0xf0000000L + 0x3010L) + 4)) = (*(volatile uint32_t*) ((0xf0000000L + 0x3000L) + 4)) = 0x00000000;
+ (*(volatile uint32_t*) (0xf0000000L + 0x3010L)) = (*(volatile uint32_t*) (0xf0000000L + 0x3000L)) = 0x00000000;
+
+
+ (*(volatile uint32_t*)0x2600000c) = 0xAB400000;
+
+
+ (*(volatile uint32_t*) ((0xf0000000L + 0x3030L) + 8)) = 0x00000000;
+
+
+ (*(volatile uint32_t*) ((0xf0000000L + 0x3010L) + 8)) = (*(volatile uint32_t*) ((0xf0000000L + 0x3000L) + 8)) = 0x00000000;
+# 152 "counter_la_uart.c"
+ (*(volatile uint32_t*)0x2600000c) = 0xAB510000;
+
+
+
+ mask = irq_getmask();
+ mask |= 1 << 2;
+ irq_setmask(mask);
+
+ user_irq_0_ev_enable_write(1);
+
 }

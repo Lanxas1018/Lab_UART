@@ -26,7 +26,7 @@ void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write_string(const char *s)
 }
 
 
-char* __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
+char __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
 {
 
 }
@@ -34,20 +34,11 @@ char* __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
 int __attribute__ ( ( section ( ".mprj" ) ) ) uart_read()
 {
     int num;
-    if(((reg_uart_stat>>5) | 0) && ((reg_uart_stat>>4) | 0))
+    if((((reg_uart_stat>>5) | 0) == 0) && (((reg_uart_stat>>4) | 0) == 0)){
+        for(int i = 0; i < 1; i++)
+            asm volatile ("nop");
+
         num = reg_rx_data;
-
-    return num;
-}
-
-int __attribute__ ( ( section ( ".mprj" ) ) ) uart_isr()
-{
-    int num;
-    uint32_t irqs = irq_pending() & irq_getmask();
-
-    if ( irqs & (1 << USER_IRQ_0_INTERRUPT)) {
-        num = uart_read();
-        user_irq_0_ev_pending_write(1); //Clear Interrupt Pending Event
     }
 
     return num;

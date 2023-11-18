@@ -1641,6 +1641,9 @@ extern uint32_t flashio_worker_begin;
 extern uint32_t flashio_worker_end;
 # 9 "../../firmware/isr.c" 2
 
+extern int uart_read();
+extern int uart_write();
+
 void isr(void);
 
 
@@ -1663,14 +1666,15 @@ void isr(void)
 
     if ( irqs & (1 << 2)) {
         user_irq_0_ev_pending_write(1);
-        if((((*(volatile uint32_t*)0x30000008)>>5) | 0) && (((*(volatile uint32_t*)0x30000008)>>4) | 0))
 
 
 
-                asm volatile ("nop");
 
-            (*(volatile uint32_t*)0x2600000c) = (*(volatile uint32_t*)0x30000000) << 16;
 
+
+
+        buf = uart_read();
+        uart_write(buf);
 
     }
 

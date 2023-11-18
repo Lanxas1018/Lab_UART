@@ -1,87 +1,16 @@
-# 0 "uart.c"
+# 0 "../../firmware/isr.c"
 # 1 "/home/ubuntu/Lab_UART_V2/testbench/uart//"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "uart.c"
-# 1 "../../firmware/defs.h" 1
-# 21 "../../firmware/defs.h"
-# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 1 3 4
-# 11 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 3 4
-# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 1 3 4
-# 34 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
-
-# 34 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
-typedef signed char int8_t;
+# 1 "../../firmware/isr.c"
 
 
-typedef short int int16_t;
-
-
-typedef long int int32_t;
-
-
-typedef long long int int64_t;
-
-
-typedef unsigned char uint8_t;
-
-
-typedef short unsigned int uint16_t;
-
-
-typedef long unsigned int uint32_t;
-
-
-typedef long long unsigned int uint64_t;
-
-
-
-
-typedef signed char int_least8_t;
-typedef short int int_least16_t;
-typedef long int int_least32_t;
-typedef long long int int_least64_t;
-typedef unsigned char uint_least8_t;
-typedef short unsigned int uint_least16_t;
-typedef long unsigned int uint_least32_t;
-typedef long long unsigned int uint_least64_t;
-
-
-
-typedef int int_fast8_t;
-typedef int int_fast16_t;
-typedef int int_fast32_t;
-typedef long long int int_fast64_t;
-typedef unsigned int uint_fast8_t;
-typedef unsigned int uint_fast16_t;
-typedef unsigned int uint_fast32_t;
-typedef long long unsigned int uint_fast64_t;
-
-
-
-
-typedef int intptr_t;
-
-
-typedef unsigned int uintptr_t;
-
-
-
-
-typedef long long int intmax_t;
-typedef long long unsigned int uintmax_t;
-# 12 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 2 3 4
-# 22 "../../firmware/defs.h" 2
-# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdbool.h" 1 3 4
-# 23 "../../firmware/defs.h" 2
 
 # 1 "../../firmware/csr.h" 1
 
 
 
 # 1 "../../firmware/generated/soc.h" 1
-# 33 "../../firmware/generated/soc.h"
-
 # 33 "../../firmware/generated/soc.h"
 static inline int config_clock_frequency_read(void) {
  return 10000000;
@@ -149,7 +78,73 @@ static inline int user_irq_5_interrupt_read(void) {
 # 5 "../../firmware/csr.h" 2
 
 
+# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 1 3 4
+# 11 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 3 4
+# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 1 3 4
+# 34 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
 
+# 34 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint-gcc.h" 3 4
+typedef signed char int8_t;
+
+
+typedef short int int16_t;
+
+
+typedef long int int32_t;
+
+
+typedef long long int int64_t;
+
+
+typedef unsigned char uint8_t;
+
+
+typedef short unsigned int uint16_t;
+
+
+typedef long unsigned int uint32_t;
+
+
+typedef long long unsigned int uint64_t;
+
+
+
+
+typedef signed char int_least8_t;
+typedef short int int_least16_t;
+typedef long int int_least32_t;
+typedef long long int int_least64_t;
+typedef unsigned char uint_least8_t;
+typedef short unsigned int uint_least16_t;
+typedef long unsigned int uint_least32_t;
+typedef long long unsigned int uint_least64_t;
+
+
+
+typedef int int_fast8_t;
+typedef int int_fast16_t;
+typedef int int_fast32_t;
+typedef long long int int_fast64_t;
+typedef unsigned int uint_fast8_t;
+typedef unsigned int uint_fast16_t;
+typedef unsigned int uint_fast32_t;
+typedef long long unsigned int uint_fast64_t;
+
+
+
+
+typedef int intptr_t;
+
+
+typedef unsigned int uintptr_t;
+
+
+
+
+typedef long long int intmax_t;
+typedef long long unsigned int uintmax_t;
+# 12 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdint.h" 2 3 4
+# 8 "../../firmware/csr.h" 2
 # 1 "../../firmware/system.h" 1
 
 
@@ -166,6 +161,8 @@ static inline int user_irq_5_interrupt_read(void) {
 
 
 
+
+# 14 "../../firmware/system.h"
 __attribute__((unused)) static void flush_cpu_icache(void)
 {
 # 26 "../../firmware/system.h"
@@ -1583,20 +1580,8 @@ static inline uint32_t user_irq_ena_out_read(void) {
 static inline void user_irq_ena_out_write(uint32_t v) {
  csr_write_simple(v, 0xf0000000L + 0x9800L);
 }
-# 25 "../../firmware/defs.h" 2
-# 1 "../../firmware/caravel.h" 1
-# 26 "../../firmware/defs.h" 2
+# 5 "../../firmware/isr.c" 2
 
-
-
-extern uint32_t sram;
-
-
-extern uint32_t flashio_worker_begin;
-extern uint32_t flashio_worker_end;
-# 2 "uart.c" 2
-# 1 "../../firmware/user_uart.h" 1
-# 3 "uart.c" 2
 # 1 "../../firmware/irq_vex.h" 1
 # 9 "../../firmware/irq_vex.h"
 # 1 "../../firmware/csr.h" 1
@@ -1631,7 +1616,34 @@ static inline unsigned int irq_pending(void)
  asm volatile ("csrr %0, %1" : "=r"(pending) : "i"(0xFC0));
  return pending;
 }
-# 4 "uart.c" 2
+# 7 "../../firmware/isr.c" 2
+# 1 "../../firmware/user_uart.h" 1
+
+
+
+
+# 1 "/opt/riscv/lib/gcc/riscv32-unknown-elf/12.1.0/include/stdbool.h" 1 3 4
+# 6 "../../firmware/user_uart.h" 2
+# 8 "../../firmware/isr.c" 2
+# 1 "../../firmware/defs.h" 1
+# 24 "../../firmware/defs.h"
+# 1 "../../firmware/csr.h" 1
+# 25 "../../firmware/defs.h" 2
+# 1 "../../firmware/caravel.h" 1
+# 26 "../../firmware/defs.h" 2
+
+
+
+extern uint32_t sram;
+
+
+extern uint32_t flashio_worker_begin;
+extern uint32_t flashio_worker_end;
+# 9 "../../firmware/isr.c" 2
+# 1 "../../firmware/uart.c" 1
+
+
+
 
 
 void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write(int n)
@@ -1657,7 +1669,7 @@ void __attribute__ ( ( section ( ".mprj" ) ) ) uart_write_string(const char *s)
 }
 
 
-char __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
+char* __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
 {
 
 }
@@ -1665,12 +1677,55 @@ char __attribute__ ( ( section ( ".mprj" ) ) ) uart_read_char()
 int __attribute__ ( ( section ( ".mprj" ) ) ) uart_read()
 {
     int num;
-    if(((((*(volatile uint32_t*)0x30000008)>>5) | 0) == 0) && ((((*(volatile uint32_t*)0x30000008)>>4) | 0) == 0)){
-        for(int i = 0; i < 1; i++)
-            asm volatile ("nop");
-
+    if((((*(volatile uint32_t*)0x30000008)>>5) | 0) && (((*(volatile uint32_t*)0x30000008)>>4) | 0))
         num = (*(volatile uint32_t*)0x30000000);
+
+    return num;
+}
+
+int __attribute__ ( ( section ( ".mprj" ) ) ) uart_isr()
+{
+    int num;
+    uint32_t irqs = irq_pending() & irq_getmask();
+
+    if ( irqs & (1 << 2)) {
+        num = uart_read();
+        user_irq_0_ev_pending_write(1);
     }
 
     return num;
+}
+# 10 "../../firmware/isr.c" 2
+
+void isr(void);
+
+
+
+
+uint32_t counter = 0xFFFF0000;
+
+
+void isr(void)
+{
+
+
+
+
+
+
+
+    uint32_t irqs = irq_pending() & irq_getmask();
+
+    if ( irqs & (1 << 2)) {
+        user_irq_0_ev_pending_write(1);
+        if((((*(volatile uint32_t*)0x30000008)>>5) | 0) && (((*(volatile uint32_t*)0x30000008)>>4) | 0))
+
+                asm volatile ("nop");
+
+        (*(volatile uint32_t*)0x2600000c) = (*(volatile uint32_t*)0x30000000) << 16;
+    }
+
+
+    return;
+
 }
