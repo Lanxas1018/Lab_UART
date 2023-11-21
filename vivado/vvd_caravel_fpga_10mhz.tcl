@@ -1222,10 +1222,10 @@ gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]/HOLD_B#qspi0_
   create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0
   set_property -dict [list CONFIG.DIN_TO {6} CONFIG.DIN_FROM {6} CONFIG.DIN_WIDTH {38} CONFIG.DOUT_WIDTH {1}] [get_bd_cells xlslice_0]
   
-  create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_1
-  create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_2
-  set_property -dict [list CONFIG.DIN_TO {6} CONFIG.DIN_FROM {37} CONFIG.DIN_WIDTH {38} CONFIG.DOUT_WIDTH {32}] [get_bd_cells xlslice_1]
-  set_property -dict [list CONFIG.DIN_FROM {4} CONFIG.DIN_WIDTH {38} CONFIG.DOUT_WIDTH {5}] [get_bd_cells xlslice_2]
+  #create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_1
+  #create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_2
+  #set_property -dict [list CONFIG.DIN_TO {6} CONFIG.DIN_FROM {37} CONFIG.DIN_WIDTH {38} CONFIG.DOUT_WIDTH {32}] [get_bd_cells xlslice_1]
+  #set_property -dict [list CONFIG.DIN_FROM {4} CONFIG.DIN_WIDTH {38} CONFIG.DOUT_WIDTH {5}] [get_bd_cells xlslice_2]
   
   create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
   set_property -dict [list CONFIG.IN0_WIDTH.VALUE_SRC USER CONFIG.IN2_WIDTH.VALUE_SRC USER CONFIG.IN1_WIDTH.VALUE_SRC USER] [get_bd_cells xlconcat_0]
